@@ -1,7 +1,7 @@
 <div align="center">
   <br />
     <a href="https://fatecmm.cps.sp.gov.br/" target="_blank">
-      <img src="https://www.fatec.edu.br/images/logo-fatec.png" alt="FATEC Logo">
+      <img src="https://bkpsitecpsnew.blob.core.windows.net/uploadsitecps/sites/36/2024/03/fatce_mogi_mirim.png" alt="FATEC Logo">
     </a>
   <br />
 

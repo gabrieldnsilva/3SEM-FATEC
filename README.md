@@ -87,6 +87,6 @@
 <h2><a name="aulas">📚 Aulas</a></h2>
 
 <ul>
-  <li><a href="/home/gabrieldnsilva/FATEC/dataStructures/projeto-pilha/README.md">Estrutura de Dados - Projeto Pilha</a></li>
-  <li><a href="/home/gabrieldnsilva/FATEC/bancoDeDados/README.md">Modelagem Lógica de Banco de Dados</a></li>
+  <li><a href="https://github.com/gabrieldnsilva/3SEM-FATEC/tree/main/dataStructures/projeto-pilha">Estrutura de Dados</a></li>
+  <li><a href="https://github.com/gabrieldnsilva/3SEM-FATEC/blob/main/bancoDeDados/">Banco de Dados</a></li>
 </ul>

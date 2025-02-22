@@ -1,7 +1,7 @@
 <div align="center">
   <br />
     <a href="https://fatecmm.cps.sp.gov.br/" target="_blank">
-      <img src="https://bkpsitecpsnew.blob.core.windows.net/uploadsitecps/sites/36/2024/03/fatce_mogi_mirim.png" alt="FATEC Logo">
+      <img src="https://bkpsitecpsnew.blob.core.windows.net/uploadsitecps/sites/36/2024/03/fatce_mogi_mirim.png" alt="FATEC Logo" style="width: 200px;">
     </a>
   <br />
 
@@ -16,64 +16,69 @@
     </div>
 </div>
 
-## 📋 <a name="table">Table of Contents</a>
+<h2>📋 <a name="table">Table of Contents</a></h2>
 
-1. 🤖 [Introdução](#introducao)
-2. ⚙️ [Tecnologias Utilizadas](#tecnologias)
-3. 🔋 [Funcionalidades](#funcionalidades)
-4. 🤸 [Início Rápido](#inicio-rapido)
-5. 🔗 [Links Úteis](#links)
+<ol>
+  <li>🤖 <a href="#introducao">Introdução</a></li>
+  <li>⚙️ <a href="#tecnologias">Tecnologias Utilizadas</a></li>
+  <li>🔋 <a href="#funcionalidades">Funcionalidades</a></li>
+  <li>🤸 <a href="#inicio-rapido">Início Rápido</a></li>
+  <li>🔗 <a href="#links">Links Úteis</a></li>
+</ol>
 
-## <a name="introducao">🤖 Introdução</a>
+<h2><a name="introducao">🤖 Introdução</a></h2>
 
-Este repositório contém materiais e projetos desenvolvidos durante minha graduação na FATEC. Aqui você encontrará códigos, anotações, e outros recursos úteis para o aprendizado das disciplinas, com ênfase especial na linguagem C, que será predominante durante o semestre.
+<p>Este repositório contém materiais e projetos desenvolvidos durante minha graduação na FATEC. Aqui você encontrará códigos, anotações, e outros recursos úteis para o aprendizado das disciplinas, com ênfase especial na linguagem C, que será predominante durante o semestre.</p>
 
-## <a name="tecnologias">⚙️ Tecnologias Utilizadas</a>
+<h2><a name="tecnologias">⚙️ Tecnologias Utilizadas</a></h2>
 
--   C
--   Git
+<ul>
+  <li>C</li>
+  <li>Git</li>
+</ul>
 
-## <a name="funcionalidades">🔋 Funcionalidades</a>
+<h2><a name="funcionalidades">🔋 Funcionalidades</a></h2>
 
-👉 **Projetos de Programação**: Códigos desenvolvidos nas disciplinas de programação, com destaque para projetos em C.
+<ul>
+  <li>👉 <b>Projetos de Programação</b>: Códigos desenvolvidos nas disciplinas de programação, com destaque para projetos em C.</li>
+  <li>👉 <b>Anotações de Aula</b>: Resumos e anotações das aulas.</li>
+  <li>👉 <b>Exercícios Resolvidos</b>: Exemplos de exercícios resolvidos.</li>
+  <li>👉 <b>Trabalhos Acadêmicos</b>: Documentos e apresentações de trabalhos acadêmicos.</li>
+</ul>
 
-👉 **Anotações de Aula**: Resumos e anotações das aulas.
+<h2><a name="inicio-rapido">🤸 Início Rápido</a></h2>
 
-👉 **Exercícios Resolvidos**: Exemplos de exercícios resolvidos.
+<p>Siga os passos abaixo para configurar o ambiente de desenvolvimento localmente.</p>
 
-👉 **Trabalhos Acadêmicos**: Documentos e apresentações de trabalhos acadêmicos.
+<h3>Pré-requisitos</h3>
 
-## <a name="inicio-rapido">🤸 Início Rápido</a>
+<p>Certifique-se de ter os seguintes softwares instalados em sua máquina:</p>
 
-Siga os passos abaixo para configurar o ambiente de desenvolvimento localmente.
+<ul>
+  <li><a href="https://git-scm.com/">Git</a></li>
+  <li><a href="https://gcc.gnu.org/">GCC (GNU Compiler Collection)</a></li>
+</ul>
 
-**Pré-requisitos**
+<h3>Clonando o Repositório</h3>
 
-Certifique-se de ter os seguintes softwares instalados em sua máquina:
+<pre><code>git clone https://github.com/gabrieldnsilva/3SEM-FATEC
+</code></pre>
 
--   [Git](https://git-scm.com/)
--   [GCC (GNU Compiler Collection)](https://gcc.gnu.org/)
+<h3>Instalação</h3>
 
-**Clonando o Repositório**
+<p>Instale as dependências do projeto conforme necessário para cada tecnologia utilizada.</p>
 
-```bash
-git clone https://github.com/gabrieldnsilva/3SEM-FATEC
-```
+<h3>Executando o Projeto</h3>
 
-**Instalação**
+<p>Para projetos em C, por exemplo:</p>
 
-Instale as dependências do projeto conforme necessário para cada tecnologia utilizada.
-
-**Executando o Projeto**
-
-Para projetos em C, por exemplo:
-
-```bash
-gcc nome_do_arquivo.c -o nome_do_arquivo
+<pre><code>gcc nome_do_arquivo.c -o nome_do_arquivo
 ./nome_do_arquivo
-```
+</code></pre>
 
-## <a name="links">🔗 Links Úteis</a>
+<h2><a name="links">🔗 Links Úteis</a></h2>
 
--   [Documentação C](https://devdocs.io/c/)
--   [Documentação GIT](https://git-scm.com/doc)
+<ul>
+  <li><a href="https://devdocs.io/c/">Documentação C</a></li>
+  <li><a href="https://git-scm.com/doc">Documentação GIT</a></li>
+</ul>

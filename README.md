@@ -24,7 +24,6 @@
   <li>🔋 <a href="#funcionalidades">Funcionalidades</a></li>
   <li>🤸 <a href="#inicio-rapido">Início Rápido</a></li>
   <li>🔗 <a href="#links">Links Úteis</a></li>
-  <li>📚 <a href="#aulas">Aulas</a></li>
 </ol>
 
 <h2><a name="introducao">🤖 Introdução</a></h2>
@@ -82,11 +81,4 @@
 <ul>
   <li><a href="https://devdocs.io/c/">Documentação C</a></li>
   <li><a href="https://git-scm.com/doc">Documentação GIT</a></li>
-</ul>
-
-<h2><a name="aulas">📚 Aulas</a></h2>
-
-<ul>
-  <li><a href="https://github.com/gabrieldnsilva/3SEM-FATEC/tree/main/dataStructures/projeto-pilha">Estrutura de Dados</a></li>
-  <li><a href="https://github.com/gabrieldnsilva/3SEM-FATEC/blob/main/bancoDeDados/">Banco de Dados</a></li>
 </ul>

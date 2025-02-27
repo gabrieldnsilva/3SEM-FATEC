@@ -1,0 +1,41 @@
+@startuml UC003_Fazer_Pedido
+
+skinparam actorStyle awesome
+
+actor "Cliente" as c
+
+rectangle "Sistema de Pedidos Online" {
+  usecase "Fazer Pedido" as UC1
+  usecase "Selecionar Produtos" as UC2
+  usecase "Revisar Carrinho" as UC2_1
+  usecase "Selecionar Endereço\nde Entrega" as UC2_2
+  usecase "Escolher Forma\nde Pagamento" as UC3
+  usecase "Confirmar Pedido" as UC4
+  usecase "Verificar Pagamento" as UC5
+  usecase "Registrar Pedido" as UC6
+  usecase "Enviar Notificação\nde Confirmação" as UC7
+  
+  usecase "(A1) Erro na\nAutenticação" as A1
+  usecase "(A2) Produtos\nIndisponíveis" as A2
+  usecase "(A3) Pagamento\nNão Aprovado" as A3
+  usecase "(A4) Restaurante\nFechado" as A4
+
+  c --> UC1
+  
+  UC1 ..> UC2 : <<include>>
+  UC2 ..> UC2_1 : <<include>>
+  UC2_1 ..> UC2_2 : <<include>>
+  UC2_2 ..> UC3 : <<include>>
+  UC3 ..> UC4 : <<include>>
+  UC4 ..> UC5 : <<include>>
+  UC5 ..> UC6 : <<include>>
+  UC6 ..> UC7 : <<include>>
+  
+  UC1 ..> A1 : <<extend>>
+  UC2 ..> A2 : <<extend>>
+  UC5 ..> A3 : <<extend>>
+  UC1 ..> A4 : <<extend>>
+
+}
+
+@enduml

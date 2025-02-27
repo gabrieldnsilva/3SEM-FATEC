@@ -1,0 +1,83 @@
+@startuml DiagramaAtividades_FazerPedido
+
+title Diagrama de Atividades - Fazer Pedido (UC003)
+
+skinparam ActivityBackgroundColor LightSkyBlue
+skinparam ActivityBorderColor DarkBlue
+skinparam ArrowColor DarkBlue
+skinparam ActivityDiamondBackgroundColor LightYellow
+skinparam ActivityDiamondBorderColor DarkOrange
+
+|Cliente|
+start
+:Acessar funcionalidade "Fazer Pedido";
+
+|Sistema|
+:Verificar autenticação do usuário;
+
+if (Usuário autenticado?) then (sim)
+  :Exibir catálogo de produtos;
+else (não)
+  :Redirecionar para tela de login;
+  |Cliente|
+  :Efetuar login;
+  |Sistema|
+  :Validar credenciais;
+  :Redirecionar para "Fazer Pedido";
+  :Exibir catálogo de produtos;
+endif
+
+if (Restaurante está aberto?) then (sim)
+  |Cliente|
+  :Selecionar produtos desejados;
+  :Adicionar produtos ao carrinho;
+  
+  |Sistema|
+  :Verificar disponibilidade;
+  
+  if (Produtos disponíveis?) then (sim)
+    :Calcular valor total;
+    :Exibir resumo do pedido;
+  else (não)
+    :Notificar indisponibilidade;
+    |Cliente|
+    :Remover item ou escolher substituto;
+    |Sistema|
+    :Atualizar carrinho;
+    :Exibir resumo do pedido;
+  endif
+  
+  |Cliente|
+  :Revisar itens do carrinho;
+  :Selecionar endereço de entrega;
+  :Escolher forma de pagamento;
+  :Confirmar pedido;
+  
+  |Sistema|
+  :Processar pagamento;
+  
+  if (Pagamento aprovado?) then (sim)
+    :Registrar pedido;
+    :Enviar confirmação para cliente;
+    :Encaminhar pedido para restaurante;
+    |Cliente|
+    :Receber confirmação;
+  else (não)
+    :Exibir erro no pagamento;
+    |Cliente|
+    :Fornecer novos dados ou escolher outra forma;
+    |Sistema|
+    :Processar novo pagamento;
+  endif
+  
+else (não)
+  :Notificar que restaurante está fechado;
+  :Mostrar horário de funcionamento;
+  |Cliente|
+  :Visualizar informações;
+endif
+
+|Sistema|
+stop
+
+@enduml

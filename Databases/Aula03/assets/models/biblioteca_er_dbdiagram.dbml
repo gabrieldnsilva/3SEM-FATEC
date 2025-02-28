@@ -1,0 +1,135 @@
+// Sistema de Biblioteca - Diagrama ER com Cardinalidades
+// Para usar: copie e cole este código em https://dbdiagram.io/
+
+// Tabela principal Item (Superclasse)
+Table Item {
+  codigo int [pk]
+  titulo varchar
+  descricao text
+  tipo_item enum('livro', 'cd', 'dvd')
+  estante_numero int [ref: > Estante.numero] // Um item pertence a uma estante
+  fornecedor_codigo int [ref: > Fornecedor.codigo] // Um item tem um fornecedor
+}
+
+// Especialização de Item como Livro
+Table Livro {
+  codigo_item int [pk, ref: - Item.codigo] // Herança e PK
+  autores varchar
+  assuntos varchar
+  ano_publicacao int
+  editora varchar
+}
+
+// Especialização de Item como CD
+Table CD {
+  codigo_item int [pk, ref: - Item.codigo] // Herança e PK
+  produtora varchar
+  ano int
+}
+
+// Especialização de Item como DVD
+Table DVD {
+  codigo_item int [pk, ref: - Item.codigo] // Herança e PK
+  produtora varchar
+  diretor varchar
+  atores_principais varchar
+}
+
+// Tabela para músicas dos CDs
+Table Musica {
+  id int [pk]
+  nome varchar
+  cantor varchar
+  codigo_cd int [ref: > CD.codigo_item] // Uma música pertence a um CD
+}
+
+// Tabela de fornecedores
+Table Fornecedor {
+  codigo int [pk]
+  nome varchar
+  endereco varchar
+}
+
+// Tabela para telefones dos fornecedores
+Table Telefone_Fornecedor {
+  id int [pk]
+  codigo_fornecedor int [ref: > Fornecedor.codigo] // Um telefone pertence a um fornecedor
+  telefone varchar
+}
+
+// Tabela de associados/membros da biblioteca
+Table Associado {
+  numero int [pk]
+  nome varchar
+  endereco varchar
+  fone varchar
+}
+
+// Tabela de funcionários da biblioteca
+Table Funcionario {
+  numero_cadastro int [pk]
+  nome varchar
+  endereco varchar
+  sexo char(1)
+}
+
+// Tabela para estantes da biblioteca
+Table Estante {
+  numero int [pk]
+  andar int
+  sala varchar
+}
+
+// Tabela para registrar empréstimos
+Table Emprestimo {
+  id int [pk]
+  associado_numero int [ref: > Associado.numero] // Um empréstimo é feito por um associado
+  item_codigo int [ref: > Item.codigo] // Um empréstimo se refere a um item
+  data_emprestimo date
+  data_devolucao date
+}
+
+// Tabela para verificações de empréstimos
+Table Verificacao {
+  id int [pk]
+  emprestimo_id int [ref: > Emprestimo.id] // Uma verificação é feita para um empréstimo
+  funcionario_numero int [ref: > Funcionario.numero_cadastro] // Uma verificação é feita por um funcionário
+  data date
+  horario time
+  item_danificado boolean
+}
+
+// Tabela de relacionamento N:M entre Funcionário e Estante
+Table Responsabilidade {
+  funcionario_numero int [pk, ref: > Funcionario.numero_cadastro] // Parte da PK composta
+  estante_numero int [pk, ref: > Estante.numero] // Parte da PK composta
+}
+
+// Definir algumas relações mais explicitamente com comentários sobre cardinalidade
+// Um Item está em uma Estante (N:1)
+// Ref: Item.estante_numero > Estante.numero
+
+// Um Item tem um Fornecedor (N:1)
+// Ref: Item.fornecedor_codigo > Fornecedor.codigo
+
+// Um Fornecedor tem muitos Telefones (1:N)
+// Ref: Telefone_Fornecedor.codigo_fornecedor > Fornecedor.codigo
+
+// Um Associado faz muitos Empréstimos (1:N)
+// Ref: Emprestimo.associado_numero > Associado.numero
+
+// Um Empréstimo refere-se a um Item (N:1)
+// Ref: Emprestimo.item_codigo > Item.codigo
+
+// Um Empréstimo tem muitas Verificações (1:N)
+// Ref: Verificacao.emprestimo_id > Emprestimo.id
+
+// Uma Verificação é feita por um Funcionário (N:1)
+// Ref: Verificacao.funcionario_numero > Funcionario.numero_cadastro
+
+// Relação N:M entre Funcionário e Estante via Responsabilidade
+// Ref: Responsabilidade.funcionario_numero > Funcionario.numero_cadastro
+// Ref: Responsabilidade.estante_numero > Estante.numero
+
+// Um CD tem muitas Músicas (1:N)
+// Ref: Musica.codigo_cd > CD.codigo_item

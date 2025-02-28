@@ -1,0 +1,134 @@
+@startuml Sistema de Biblioteca - Diagrama ER com Cardinalidades
+
+' Configurações de estilo
+!define table(x) class x << (T,#FFAAAA) >>
+!define primary_key(x) <b><u>x</u></b>
+!define foreign_key(x) <i>x</i>
+
+' Entidades
+table(Item) {
+  primary_key(codigo)
+  titulo
+  descricao
+  tipo_item
+  foreign_key(estante_numero)
+  foreign_key(fornecedor_codigo)
+}
+
+table(Livro) {
+  primary_key(codigo_item)
+  autores
+  assuntos
+  ano_publicacao
+  editora
+}
+
+table(CD) {
+  primary_key(codigo_item)
+  produtora
+  ano
+}
+
+table(DVD) {
+  primary_key(codigo_item)
+  produtora
+  diretor
+  atores_principais
+}
+
+table(Musica) {
+  primary_key(id)
+  nome
+  cantor
+  foreign_key(codigo_cd)
+}
+
+table(Fornecedor) {
+  primary_key(codigo)
+  nome
+  endereco
+}
+
+table(Telefone_Fornecedor) {
+  primary_key(id)
+  foreign_key(codigo_fornecedor)
+  telefone
+}
+
+table(Associado) {
+  primary_key(numero)
+  nome
+  endereco
+  fone
+}
+
+table(Funcionario) {
+  primary_key(numero_cadastro)
+  nome
+  endereco
+  sexo
+}
+
+table(Estante) {
+  primary_key(numero)
+  andar
+  sala
+}
+
+table(Emprestimo) {
+  primary_key(id)
+  foreign_key(associado_numero)
+  foreign_key(item_codigo)
+  data_emprestimo
+  data_devolucao
+}
+
+table(Verificacao) {
+  primary_key(id)
+  foreign_key(emprestimo_id)
+  foreign_key(funcionario_numero)
+  data
+  horario
+  item_danificado
+}
+
+table(Responsabilidade) {
+  primary_key(funcionario_numero)
+  primary_key(estante_numero)
+}
+
+' Relacionamentos com cardinalidades explícitas
+' Herança
+Item <|-- Livro : herança
+Item <|-- CD : herança
+Item <|-- DVD : herança
+
+' Item N:1 Estante (muitos itens podem estar em uma estante)
+Item "*" --o "1" Estante : armazenado em >
+
+' Item N:1 Fornecedor (muitos itens podem ser fornecidos por um fornecedor)
+Item "*" --o "1" Fornecedor : fornecido por >
+
+' Fornecedor 1:N Telefone (um fornecedor pode ter vários telefones)
+Fornecedor "1" --o "*" Telefone_Fornecedor : possui >
+
+' Associado 1:N Empréstimo (um associado pode fazer vários empréstimos)
+Associado "1" --o "*" Emprestimo : realiza >
+
+' Empréstimo N:1 Item (cada empréstimo se refere a um único item)
+Emprestimo "*" --o "1" Item : referencia >
+
+' Empréstimo 1:N Verificação (um empréstimo pode ter várias verificações)
+Emprestimo "1" --o "*" Verificacao : verificado em >
+
+' Verificação N:1 Funcionário (várias verificações podem ser feitas por um funcionário)
+Verificacao "*" --o "1" Funcionario : realizada por >
+
+' Responsabilidade como tabela associativa entre Funcionário e Estante (N:M)
+Funcionario "1" --o "*" Responsabilidade : tem >
+Responsabilidade "*" --o "1" Estante : para >
+
+' CD 1:N Música (um CD pode conter várias músicas)
+CD "1" --o "*" Musica : contém >
+
+@enduml

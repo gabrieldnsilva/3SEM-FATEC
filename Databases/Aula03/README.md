@@ -1,40 +1,4 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Modelo Lógico para Sistema de Biblioteca</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
-            margin: 0 auto;
-            max-width: 900px;
-            padding: 20px;
-        }
-        header {
-            border-bottom: 1px solid #ccc;
-            margin-bottom: 20px;
-        }
-        section {
-            margin-bottom: 30px;
-        }
-        .entity {
-            background-color: #f9f9f9;
-            border-left: 4px solid #0066cc;
-            margin-bottom: 15px;
-            padding: 10px 15px;
-        }
-        .relationship {
-            margin-bottom: 10px;
-        }
-    </style>
-</head>
-<body>
-    <header>
-        <h1>Modelo Lógico para Sistema de Biblioteca</h1>
-    </header> 
-    <main>
+<h1 align="center">Modelo Lógico para Sistema de Biblioteca</h1>
         <section id="descricao">
             <h2>Descrição do Problema</h2>
             <p>Projete um esquema de Entidade Relacionamento (ER) – Modelo lógico para uma Biblioteca que mantém um acervo de itens que podem ser livros, CDs e DVDs.</p>
@@ -178,6 +142,3 @@
             <h2>Diagrama ER - dbdiagram.io</h2>
             <img src="/Aula03/assets/img/diagrama-er-dbdiagramIO.png" width=700px height=700px/>
         </section>
-    </main>
-</body>
-</html>

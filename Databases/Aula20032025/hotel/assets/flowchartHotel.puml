@@ -1,0 +1,86 @@
+flowchart TD
+    Quarto["QUARTO
+    --------------
+    id_quarto PK
+    disponibilidade
+    capacidade
+    tipo"]
+    
+    Reserva["RESERVA
+    --------------
+    id_reserva PK
+    data_checkin
+    data_checkout
+    id_quarto FK
+    cpf_hospede FK"]
+    
+    Pagamento["PAGAMENTO
+    --------------
+    id_pagamento PK
+    valor
+    forma_pagamento
+    data_pagamento
+    id_reserva FK"]
+    
+    Hospede["HÓSPEDE
+    --------------
+    cpf PK
+    data_nascimento
+    nome
+    telefone"]
+    
+    Atendimento["ATENDIMENTO
+    --------------
+    id_atendimento PK
+    descricao
+    data_atendimento
+    cpf_hospede FK
+    cpf_funcionario FK"]
+    
+    ServicoAdicional["SERVIÇO ADICIONAL
+    --------------
+    id_servico PK
+    nome
+    valor"]
+    
+    ContratacaoServico["CONTRATAÇÃO SERVIÇO
+    --------------
+    id_contratacao PK
+    data_contratacao
+    cpf_hospede FK
+    id_servico FK
+    cpf_funcionario FK"]
+    
+    Funcionario["FUNCIONÁRIO
+    --------------
+    cpf PK
+    telefone
+    nome
+    endereco
+    cargo
+    data_admissao"]
+    
+    %% Relacionamentos com símbolos de cardinalidade
+    Quarto -->|"1"| Reserva
+    Reserva -->|"N"| Quarto
+    
+    Reserva -->|"1"| Pagamento
+    Pagamento -->|"1"| Reserva
+    
+    Hospede -->|"1"| Reserva
+    Reserva -->|"N"| Hospede
+    
+    Hospede -->|"1"| Atendimento
+    Atendimento -->|"N"| Hospede
+    
+    Hospede -->|"1"| ContratacaoServico
+    ContratacaoServico -->|"N"| Hospede
+    
+    ServicoAdicional -->|"1"| ContratacaoServico
+    ContratacaoServico -->|"N"| ServicoAdicional
+    
+    Funcionario -->|"1"| Atendimento
+    Atendimento -->|"N"| Funcionario
+    
+    Funcionario -->|"1"| ContratacaoServico
+    ContratacaoServico -->|"N"| Funcionario

@@ -1,0 +1,120 @@
+@startuml Cinema
+
+!define primary_key(x) <b><color:#e73131><&key></color> x</b>
+!define foreign_key(x) <color:#aaaaaa><&key></color> x
+!define attribute(x) <color:#000000><&caret-right></color> x
+
+entity "Filme" as filme {
+  primary_key(id_filme) : INT
+  attribute(titulo) : VARCHAR(100)
+  attribute(diretor) : VARCHAR(100)
+  attribute(duracao) : INT
+  attribute(classificacao_indicativa) : VARCHAR(10)
+  attribute(sinopse) : TEXT
+  attribute(genero) : VARCHAR(50)
+  attribute(data_estreia) : DATE
+  attribute(status_exibicao) : BOOLEAN
+}
+
+entity "Sala" as sala {
+  primary_key(id_sala) : INT
+  attribute(numero) : INT
+  attribute(capacidade) : INT
+  attribute(tipo) : VARCHAR(50)
+  attribute(status_operacional) : BOOLEAN
+}
+
+entity "Assento" as assento {
+  primary_key(id_assento) : INT
+  attribute(fileira) : CHAR(1)
+  attribute(numero) : INT
+  attribute(tipo) : VARCHAR(20)
+  foreign_key(id_sala) : INT
+}
+
+entity "Sessao" as sessao {
+  primary_key(id_sessao) : INT
+  attribute(data) : DATE
+  attribute(horario_inicio) : TIME
+  attribute(horario_termino) : TIME
+  attribute(valor_inteira) : DECIMAL(10,2)
+  attribute(valor_meia) : DECIMAL(10,2)
+  attribute(idioma) : VARCHAR(30)
+  attribute(formato_exibicao) : VARCHAR(20)
+  foreign_key(id_filme) : INT
+  foreign_key(id_sala) : INT
+}
+
+entity "Cliente" as cliente {
+  primary_key(id_cliente) : INT
+  attribute(nome) : VARCHAR(100)
+  attribute(cpf) : VARCHAR(14)
+  attribute(email) : VARCHAR(100)
+  attribute(telefone) : VARCHAR(20)
+  attribute(data_nascimento) : DATE
+  attribute(data_cadastro) : DATE
+}
+
+entity "Funcionario" as funcionario {
+  primary_key(id_funcionario) : INT
+  attribute(nome) : VARCHAR(100)
+  attribute(cpf) : VARCHAR(14)
+  attribute(cargo) : VARCHAR(50)
+  attribute(data_admissao) : DATE
+  attribute(salario) : DECIMAL(10,2)
+  foreign_key(id_supervisor) : INT
+}
+
+entity "Ingresso" as ingresso {
+  primary_key(id_ingresso) : INT
+  attribute(tipo_ingresso) : VARCHAR(10)
+  attribute(data_hora_compra) : DATETIME
+  attribute(forma_pagamento) : VARCHAR(30)
+  attribute(valor) : DECIMAL(10,2)
+  attribute(codigo_validacao) : VARCHAR(20)
+  foreign_key(id_sessao) : INT
+  foreign_key(id_cliente) : INT
+  foreign_key(id_assento) : INT
+}
+
+entity "Produto" as produto {
+  primary_key(id_produto) : INT
+  attribute(nome) : VARCHAR(100)
+  attribute(descricao) : TEXT
+  attribute(categoria) : VARCHAR(50)
+  attribute(valor) : DECIMAL(10,2)
+  attribute(quantidade_estoque) : INT
+}
+
+entity "Venda" as venda {
+  primary_key(id_venda) : INT
+  attribute(data_hora) : DATETIME
+  attribute(valor_total) : DECIMAL(10,2)
+  attribute(forma_pagamento) : VARCHAR(30)
+  foreign_key(id_funcionario) : INT
+  foreign_key(id_cliente) : INT NULL
+}
+
+entity "ItemVenda" as itemvenda {
+  primary_key(id_item) : INT
+  attribute(quantidade) : INT
+  attribute(valor_unitario) : DECIMAL(10,2)
+  attribute(subtotal) : DECIMAL(10,2)
+  foreign_key(id_venda) : INT
+  foreign_key(id_produto) : INT
+}
+
+' Relacionamentos
+filme ||--o{ sessao
+sala ||--o{ sessao
+sala ||--o{ assento
+sessao ||--o{ ingresso
+cliente ||--o{ ingresso
+cliente |o--o{ venda
+assento ||--o{ ingresso
+funcionario ||--o{ venda
+funcionario |o--|| funcionario : supervisiona
+venda ||--o{ itemvenda
+produto ||--o{ itemvenda
+
+@enduml2

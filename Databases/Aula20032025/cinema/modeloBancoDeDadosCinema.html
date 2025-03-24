@@ -1,0 +1,571 @@
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        line-height: 1.6;
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+    h1 {
+        color: #3a3a3a;
+        text-align: center;
+        border-bottom: 2px solid #3a3a3a;
+        padding-bottom: 10px;
+    }
+    h2 {
+        color: #2c3e50;
+        margin-top: 30px;
+        border-bottom: 1px solid #eee;
+        padding-bottom: 5px;
+    }
+    h3 {
+        color: #3498db;
+        margin-top: 20px;
+    }
+    .entity {
+        background-color: #f9f9f9;
+        padding: 15px;
+        margin-bottom: 20px;
+        border-radius: 5px;
+        border-left: 5px solid #3498db;
+    }
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 15px 0;
+    }
+    th, td {
+        border: 1px solid #ddd;
+        padding: 8px;
+        text-align: left;
+    }
+    th {
+        background-color: #f2f2f2;
+    }
+    .relationship {
+        padding: 8px;
+        margin: 5px 0;
+        background-color: #e8f4fd;
+        border-radius: 4px;
+    }
+</style>
+
+<h1 align="center">Modelo de Banco de Dados para Sistema de Cinema</h1>
+
+<h2 align= "center">Visão Geral</h2> 
+
+<p align="center">Este documento descreve o modelo de dados para um sistema de gerenciamento de cinema, incluindo filmes, sessões, vendas de ingressos e produtos da bomboniere.</p>
+
+<h3 align="center">Entidades e Atributos</h3>
+
+<div class="entity">
+<h3>Filme</h3>
+<table>
+  <tr>
+    <th>Atributo</th>
+    <th>Tipo</th>
+    <th>Descrição</th>
+  </tr>
+  <tr>
+    <td><strong>ID</strong></td>
+    <td>Inteiro</td>
+    <td>Identificador único do filme (PK)</td>
+  </tr>
+  <tr>
+    <td>Título</td>
+    <td>Texto</td>
+    <td>Nome do filme</td>
+  </tr>
+  <tr>
+    <td>Diretor</td>
+    <td>Texto</td>
+    <td>Nome do diretor do filme</td>
+  </tr>
+  <tr>
+    <td>Duração</td>
+    <td>Inteiro</td>
+    <td>Duração em minutos</td>
+  </tr>
+  <tr>
+    <td>Classificação Indicativa</td>
+    <td>Texto</td>
+    <td>Faixa etária recomendada</td>
+  </tr>
+  <tr>
+    <td>Sinopse</td>
+    <td>Texto longo</td>
+    <td>Breve descrição do filme</td>
+  </tr>
+  <tr>
+    <td>Gênero</td>
+    <td>Texto</td>
+    <td>Categoria do filme</td>
+  </tr>
+  <tr>
+    <td>Data de Estreia</td>
+    <td>Data</td>
+    <td>Data de lançamento</td>
+  </tr>
+  <tr>
+    <td>Status de Exibição</td>
+    <td>Booleano</td>
+    <td>Indica se está em cartaz</td>
+  </tr>
+</table>
+</div>
+
+<div class="entity">
+<h3>Sala</h3>
+<table>
+  <tr>
+    <th>Atributo</th>
+    <th>Tipo</th>
+    <th>Descrição</th>
+  </tr>
+  <tr>
+    <td><strong>ID</strong></td>
+    <td>Inteiro</td>
+    <td>Identificador único da sala (PK)</td>
+  </tr>
+  <tr>
+    <td>Número</td>
+    <td>Inteiro</td>
+    <td>Número identificador da sala</td>
+  </tr>
+  <tr>
+    <td>Capacidade</td>
+    <td>Inteiro</td>
+    <td>Quantidade de assentos</td>
+  </tr>
+  <tr>
+    <td>Tipo</td>
+    <td>Texto</td>
+    <td>Ex: Regular, VIP, 3D, IMAX</td>
+  </tr>
+  <tr>
+    <td>Status Operacional</td>
+    <td>Booleano</td>
+    <td>Indica se a sala está operacional</td>
+  </tr>
+</table>
+</div>
+
+<div class="entity">
+<h3>Assento</h3>
+<table>
+  <tr>
+    <th>Atributo</th>
+    <th>Tipo</th>
+    <th>Descrição</th>
+  </tr>
+  <tr>
+    <td><strong>ID</strong></td>
+    <td>Inteiro</td>
+    <td>Identificador único do assento (PK)</td>
+  </tr>
+  <tr>
+    <td>Fileira</td>
+    <td>Caractere</td>
+    <td>Letra da fileira</td>
+  </tr>
+  <tr>
+    <td>Número</td>
+    <td>Inteiro</td>
+    <td>Número do assento na fileira</td>
+  </tr>
+  <tr>
+    <td>Tipo</td>
+    <td>Texto</td>
+    <td>Ex: Regular, VIP, Acessível</td>
+  </tr>
+  <tr>
+    <td>ID Sala</td>
+    <td>Inteiro</td>
+    <td>Referência à sala (FK)</td>
+  </tr>
+</table>
+</div>
+
+<div class="entity">
+<h3>Sessão</h3>
+<table>
+  <tr>
+    <th>Atributo</th>
+    <th>Tipo</th>
+    <th>Descrição</th>
+  </tr>
+  <tr>
+    <td><strong>ID</strong></td>
+    <td>Inteiro</td>
+    <td>Identificador único da sessão (PK)</td>
+  </tr>
+  <tr>
+    <td>Data</td>
+    <td>Data</td>
+    <td>Data da sessão</td>
+  </tr>
+  <tr>
+    <td>Horário de Início</td>
+    <td>Hora</td>
+    <td>Hora de início da sessão</td>
+  </tr>
+  <tr>
+    <td>Horário de Término</td>
+    <td>Hora</td>
+    <td>Hora de término da sessão</td>
+  </tr>
+  <tr>
+    <td>Valor Inteira</td>
+    <td>Decimal</td>
+    <td>Preço do ingresso inteiro</td>
+  </tr>
+  <tr>
+    <td>Valor Meia</td>
+    <td>Decimal</td>
+    <td>Preço da meia-entrada</td>
+  </tr>
+  <tr>
+    <td>Idioma</td>
+    <td>Texto</td>
+    <td>Idioma da exibição</td>
+  </tr>
+  <tr>
+    <td>Formato de Exibição</td>
+    <td>Texto</td>
+    <td>Ex: 2D, 3D, IMAX</td>
+  </tr>
+  <tr>
+    <td>ID Filme</td>
+    <td>Inteiro</td>
+    <td>Referência ao filme (FK)</td>
+  </tr>
+  <tr>
+    <td>ID Sala</td>
+    <td>Inteiro</td>
+    <td>Referência à sala (FK)</td>
+  </tr>
+</table>
+</div>
+
+<div class="entity">
+<h3>Cliente</h3>
+<table>
+  <tr>
+    <th>Atributo</th>
+    <th>Tipo</th>
+    <th>Descrição</th>
+  </tr>
+  <tr>
+    <td><strong>ID</strong></td>
+    <td>Inteiro</td>
+    <td>Identificador único do cliente (PK)</td>
+  </tr>
+  <tr>
+    <td>Nome</td>
+    <td>Texto</td>
+    <td>Nome completo</td>
+  </tr>
+  <tr>
+    <td>CPF</td>
+    <td>Texto</td>
+    <td>Documento de identificação</td>
+  </tr>
+  <tr>
+    <td>Email</td>
+    <td>Texto</td>
+    <td>Endereço de email</td>
+  </tr>
+  <tr>
+    <td>Telefone</td>
+    <td>Texto</td>
+    <td>Número de telefone</td>
+  </tr>
+  <tr>
+    <td>Data de Nascimento</td>
+    <td>Data</td>
+    <td>Data de nascimento</td>
+  </tr>
+  <tr>
+    <td>Data de Cadastro</td>
+    <td>Data</td>
+    <td>Data de registro no sistema</td>
+  </tr>
+</table>
+</div>
+
+<div class="entity">
+<h3>Funcionário</h3>
+<table>
+  <tr>
+    <th>Atributo</th>
+    <th>Tipo</th>
+    <th>Descrição</th>
+  </tr>
+  <tr>
+    <td><strong>ID</strong></td>
+    <td>Inteiro</td>
+    <td>Identificador único do funcionário (PK)</td>
+  </tr>
+  <tr>
+    <td>Nome</td>
+    <td>Texto</td>
+    <td>Nome completo</td>
+  </tr>
+  <tr>
+    <td>CPF</td>
+    <td>Texto</td>
+    <td>Documento de identificação</td>
+  </tr>
+  <tr>
+    <td>Cargo</td>
+    <td>Texto</td>
+    <td>Função no cinema</td>
+  </tr>
+  <tr>
+    <td>Data de Admissão</td>
+    <td>Data</td>
+    <td>Data de contratação</td>
+  </tr>
+  <tr>
+    <td>Salário</td>
+    <td>Decimal</td>
+    <td>Remuneração</td>
+  </tr>
+  <tr>
+    <td>ID Supervisor</td>
+    <td>Inteiro</td>
+    <td>Referência ao funcionário supervisor (FK)</td>
+  </tr>
+</table>
+</div>
+
+<div class="entity">
+<h3>Ingresso</h3>
+<table>
+  <tr>
+    <th>Atributo</th>
+    <th>Tipo</th>
+    <th>Descrição</th>
+  </tr>
+  <tr>
+    <td><strong>ID</strong></td>
+    <td>Inteiro</td>
+    <td>Identificador único do ingresso (PK)</td>
+  </tr>
+  <tr>
+    <td>Tipo de Ingresso</td>
+    <td>Texto</td>
+    <td>Ex: Inteira, Meia</td>
+  </tr>
+  <tr>
+    <td>Data e Hora da Compra</td>
+    <td>Data/Hora</td>
+    <td>Momento da compra</td>
+  </tr>
+  <tr>
+    <td>Forma de Pagamento</td>
+    <td>Texto</td>
+    <td>Ex: Dinheiro, Cartão, PIX</td>
+  </tr>
+  <tr>
+    <td>Valor</td>
+    <td>Decimal</td>
+    <td>Preço pago</td>
+  </tr>
+  <tr>
+    <td>Código de Validação</td>
+    <td>Texto</td>
+    <td>Código para validar o ingresso</td>
+  </tr>
+  <tr>
+    <td>ID Sessão</td>
+    <td>Inteiro</td>
+    <td>Referência à sessão (FK)</td>
+  </tr>
+  <tr>
+    <td>ID Cliente</td>
+    <td>Inteiro</td>
+    <td>Referência ao cliente (FK)</td>
+  </tr>
+  <tr>
+    <td>ID Assento</td>
+    <td>Inteiro</td>
+    <td>Referência ao assento (FK)</td>
+  </tr>
+</table>
+</div>
+
+<div class="entity">
+<h3>Produto</h3>
+<table>
+  <tr>
+    <th>Atributo</th>
+    <th>Tipo</th>
+    <th>Descrição</th>
+  </tr>
+  <tr>
+    <td><strong>ID</strong></td>
+    <td>Inteiro</td>
+    <td>Identificador único do produto (PK)</td>
+  </tr>
+  <tr>
+    <td>Nome</td>
+    <td>Texto</td>
+    <td>Nome do produto</td>
+  </tr>
+  <tr>
+    <td>Descrição</td>
+    <td>Texto longo</td>
+    <td>Detalhes do produto</td>
+  </tr>
+  <tr>
+    <td>Categoria</td>
+    <td>Texto</td>
+    <td>Ex: Alimento, Bebida, Combo</td>
+  </tr>
+  <tr>
+    <td>Valor</td>
+    <td>Decimal</td>
+    <td>Preço de venda</td>
+  </tr>
+  <tr>
+    <td>Quantidade em Estoque</td>
+    <td>Inteiro</td>
+    <td>Quantidade disponível</td>
+  </tr>
+</table>
+</div>
+
+<div class="entity">
+<h3>Venda</h3>
+<table>
+  <tr>
+    <th>Atributo</th>
+    <th>Tipo</th>
+    <th>Descrição</th>
+  </tr>
+  <tr>
+    <td><strong>ID</strong></td>
+    <td>Inteiro</td>
+    <td>Identificador único da venda (PK)</td>
+  </tr>
+  <tr>
+    <td>Data e Hora</td>
+    <td>Data/Hora</td>
+    <td>Momento da venda</td>
+  </tr>
+  <tr>
+    <td>Valor Total</td>
+    <td>Decimal</td>
+    <td>Valor total da compra</td>
+  </tr>
+  <tr>
+    <td>Forma de Pagamento</td>
+    <td>Texto</td>
+    <td>Ex: Dinheiro, Cartão, PIX</td>
+  </tr>
+  <tr>
+    <td>ID Funcionário</td>
+    <td>Inteiro</td>
+    <td>Referência ao funcionário responsável (FK)</td>
+  </tr>
+  <tr>
+    <td>ID Cliente</td>
+    <td>Inteiro</td>
+    <td>Referência ao cliente (FK, pode ser nulo)</td>
+  </tr>
+</table>
+</div>
+
+<div class="entity">
+<h3>Item de Venda</h3>
+<table>
+  <tr>
+    <th>Atributo</th>
+    <th>Tipo</th>
+    <th>Descrição</th>
+  </tr>
+  <tr>
+    <td><strong>ID</strong></td>
+    <td>Inteiro</td>
+    <td>Identificador único do item (PK)</td>
+  </tr>
+  <tr>
+    <td>Quantidade</td>
+    <td>Inteiro</td>
+    <td>Número de itens</td>
+  </tr>
+  <tr>
+    <td>Valor Unitário</td>
+    <td>Decimal</td>
+    <td>Preço por unidade</td>
+  </tr>
+  <tr>
+    <td>Subtotal</td>
+    <td>Decimal</td>
+    <td>Valor total do item (quantidade x valor unitário)</td>
+  </tr>
+  <tr>
+    <td>ID Venda</td>
+    <td>Inteiro</td>
+    <td>Referência à venda (FK)</td>
+  </tr>
+  <tr>
+    <td>ID Produto</td>
+    <td>Inteiro</td>
+    <td>Referência ao produto (FK)</td>
+  </tr>
+</table>
+</div>
+
+## Relacionamentos entre Entidades
+
+<div class="relationship">
+  <p><strong>Filme → Sessão:</strong> Um Filme pode ter várias Sessões, mas cada Sessão está associada a apenas um Filme.</p>
+</div>
+
+<div class="relationship">
+  <p><strong>Sala → Sessão:</strong> Uma Sala pode abrigar várias Sessões em horários diferentes.</p>
+</div>
+
+<div class="relationship">
+  <p><strong>Sala → Assento:</strong> Uma Sala contém vários Assentos, cada Assento pertence a uma única Sala.</p>
+</div>
+
+<div class="relationship">
+  <p><strong>Assento → Ingresso:</strong> Um Assento pode estar associado a vários Ingressos (em diferentes sessões).</p>
+</div>
+
+<div class="relationship">
+  <p><strong>Sessão → Ingresso:</strong> Uma Sessão pode ter vários Ingressos vendidos.</p>
+</div>
+
+<div class="relationship">
+  <p><strong>Cliente → Ingresso:</strong> Um Cliente pode comprar vários Ingressos para diferentes sessões.</p>
+</div>
+
+<div class="relationship">
+  <p><strong>Cliente → Venda:</strong> Um Cliente pode fazer várias Compras na bomboniere, mas uma compra pode existir sem identificação do cliente.</p>
+</div>
+
+<div class="relationship">
+  <p><strong>Funcionário → Funcionário:</strong> Um Funcionário pode ser supervisor de outros Funcionários.</p>
+</div>
+
+<div class="relationship">
+  <p><strong>Funcionário → Venda:</strong> Um Funcionário pode realizar várias Vendas.</p>
+</div>
+
+<div class="relationship">
+  <p><strong>Venda → Item de Venda:</strong> Uma Venda contém um ou mais Itens de produto.</p>
+</div>
+
+<div class="relationship">
+  <p><strong>Produto → Item de Venda:</strong> Um Produto pode estar presente em vários Itens de venda.</p>
+</div>
+
+<div class="relationship">
+  <p><strong>Sessão + Assento → Ingresso:</strong> Cada Ingresso está associado a uma Sessão específica e a um Assento específico.</p>
+</div>
+```
+</copilot-edited-file>

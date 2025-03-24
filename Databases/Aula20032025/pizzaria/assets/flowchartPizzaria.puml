@@ -1,0 +1,144 @@
+flowchart TD
+    Pizzaria["PIZZARIA
+    --------------
+    id_pizzaria PK
+    nome
+    cnpj
+    data_validade_alvara
+    tipo"]
+    
+    Fornecedor["FORNECEDOR
+    --------------
+    id_fornecedor PK
+    cnpj
+    nome
+    endereco
+    telefone
+    tipo"]
+    
+    Produto["PRODUTO
+    --------------
+    id_produto PK
+    nome
+    descricao
+    preco_custo
+    quantidade_estoque"]
+    
+    Fornecimento["FORNECIMENTO
+    --------------
+    id_fornecimento PK
+    lote
+    data_entrega
+    quantidade
+    preco_unitario
+    id_fornecedor FK
+    id_produto FK"]
+    
+    Funcionario["FUNCIONARIO
+    --------------
+    id_funcionario PK
+    nome
+    telefone
+    endereco
+    idade
+    sexo
+    data_admissao
+    tipo_funcionario
+    id_pizzaria FK"]
+    
+    Garcom["GARCOM
+    --------------
+    id_garcom PK
+    curso_especializado
+    data_conclusao
+    id_funcionario FK"]
+    
+    Cozinheiro["COZINHEIRO
+    --------------
+    id_cozinheiro PK
+    curso_especializado
+    data_conclusao
+    id_funcionario FK"]
+    
+    Motoboy["MOTOBOY
+    --------------
+    id_motoboy PK
+    cnh
+    data_vencimento_cnh
+    id_funcionario FK"]
+    
+    Cliente["CLIENTE
+    --------------
+    id_cliente PK
+    cpf
+    nome
+    telefone
+    email
+    endereco"]
+    
+    Pedido["PEDIDO
+    --------------
+    id_pedido PK
+    data_hora
+    valor_total
+    status
+    tipo_entrega
+    id_cliente FK
+    id_funcionario FK
+    id_motoboy FK"]
+    
+    ItemPedido["ITEM_PEDIDO
+    --------------
+    id_item PK
+    quantidade
+    valor_unitario
+    subtotal
+    observacoes
+    id_pedido FK
+    id_produto FK"]
+    
+    Pizza["PIZZA
+    --------------
+    id_pizza PK
+    nome
+    descricao
+    tamanho
+    preco
+    id_produto FK"]
+    
+    %% Relacionamentos com símbolos de cardinalidade
+    Pizzaria -->|"1"| Funcionario
+    Funcionario -->|"N"| Pizzaria
+    
+    Fornecedor -->|"1"| Fornecimento
+    Fornecimento -->|"N"| Fornecedor
+    
+    Produto -->|"1"| Fornecimento
+    Fornecimento -->|"N"| Produto
+    
+    Funcionario -->|"1"| Garcom
+    Garcom -->|"0,1"| Funcionario
+    
+    Funcionario -->|"1"| Cozinheiro
+    Cozinheiro -->|"0,1"| Funcionario
+    
+    Funcionario -->|"1"| Motoboy
+    Motoboy -->|"0,1"| Funcionario
+    
+    Cliente -->|"1"| Pedido
+    Pedido -->|"N"| Cliente
+    
+    Pedido -->|"1"| ItemPedido
+    ItemPedido -->|"N"| Pedido
+    
+    Produto -->|"1"| ItemPedido
+    ItemPedido -->|"N"| Produto
+    
+    Produto -->|"1"| Pizza
+    Pizza -->|"0,1"| Produto
+    
+    Funcionario -->|"1"| Pedido
+    Pedido -->|"N"| Funcionario
+    
+    Motoboy -->|"1"| Pedido
+    Pedido -->|"N"| Motoboy

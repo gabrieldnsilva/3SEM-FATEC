@@ -1,0 +1,128 @@
+@startuml Pizzaria
+
+!define primary_key(x) <b><color:#e73131><&key></color> x</b>
+!define foreign_key(x) <color:#aaaaaa><&key></color> x
+!define attribute(x) <color:#000000><&caret-right></color> x
+
+entity "Pizzaria" as pizzaria {
+  primary_key(id_pizzaria) : INT
+  attribute(nome) : VARCHAR(100)
+  attribute(cnpj) : VARCHAR(18)
+  attribute(data_validade_alvara) : DATE
+  attribute(tipo) : VARCHAR(50)
+}
+
+entity "Fornecedor" as fornecedor {
+  primary_key(id_fornecedor) : INT
+  attribute(cnpj) : VARCHAR(18)
+  attribute(nome) : VARCHAR(100)
+  attribute(endereco) : TEXT
+  attribute(telefone) : VARCHAR(15)
+  attribute(tipo) : VARCHAR(50)
+}
+
+entity "Produto" as produto {
+  primary_key(id_produto) : INT
+  attribute(nome) : VARCHAR(100)
+  attribute(descricao) : TEXT
+  attribute(preco_custo) : DECIMAL(10,2)
+  attribute(quantidade_estoque) : INT
+}
+
+entity "Fornecimento" as fornecimento {
+  primary_key(id_fornecimento) : INT
+  attribute(lote) : VARCHAR(50)
+  attribute(data_entrega) : DATE
+  attribute(quantidade) : INT
+  attribute(preco_unitario) : DECIMAL(10,2)
+  foreign_key(id_fornecedor) : INT
+  foreign_key(id_produto) : INT
+}
+
+entity "Funcionario" as funcionario {
+  primary_key(id_funcionario) : INT
+  attribute(nome) : VARCHAR(100)
+  attribute(telefone) : VARCHAR(15)
+  attribute(endereco) : TEXT
+  attribute(idade) : INT
+  attribute(sexo) : CHAR(1)
+  attribute(data_admissao) : DATE
+  attribute(tipo_funcionario) : VARCHAR(20)
+  foreign_key(id_pizzaria) : INT
+}
+
+entity "Garcom" as garcom {
+  primary_key(id_garcom) : INT
+  attribute(curso_especializado) : VARCHAR(100)
+  attribute(data_conclusao) : DATE
+  foreign_key(id_funcionario) : INT
+}
+
+entity "Cozinheiro" as cozinheiro {
+  primary_key(id_cozinheiro) : INT
+  attribute(curso_especializado) : VARCHAR(100)
+  attribute(data_conclusao) : DATE
+  foreign_key(id_funcionario) : INT
+}
+
+entity "Motoboy" as motoboy {
+  primary_key(id_motoboy) : INT
+  attribute(cnh) : VARCHAR(20)
+  attribute(data_vencimento_cnh) : DATE
+  foreign_key(id_funcionario) : INT
+}
+
+entity "Cliente" as cliente {
+  primary_key(id_cliente) : INT
+  attribute(cpf) : VARCHAR(14)
+  attribute(nome) : VARCHAR(100)
+  attribute(telefone) : VARCHAR(15)
+  attribute(email) : VARCHAR(100)
+  attribute(endereco) : TEXT
+}
+
+entity "Pedido" as pedido {
+  primary_key(id_pedido) : INT
+  attribute(data_hora) : DATETIME
+  attribute(valor_total) : DECIMAL(10,2)
+  attribute(status) : VARCHAR(20)
+  attribute(tipo_entrega) : VARCHAR(20)
+  foreign_key(id_cliente) : INT
+  foreign_key(id_funcionario) : INT NULL
+  foreign_key(id_motoboy) : INT NULL
+}
+
+entity "ItemPedido" as itempedido {
+  primary_key(id_item) : INT
+  attribute(quantidade) : INT
+  attribute(valor_unitario) : DECIMAL(10,2)
+  attribute(subtotal) : DECIMAL(10,2)
+  attribute(observacoes) : TEXT
+  foreign_key(id_pedido) : INT
+  foreign_key(id_produto) : INT
+}
+
+entity "Pizza" as pizza {
+  primary_key(id_pizza) : INT
+  attribute(nome) : VARCHAR(100)
+  attribute(descricao) : TEXT
+  attribute(tamanho) : VARCHAR(20)
+  attribute(preco) : DECIMAL(10,2)
+  foreign_key(id_produto) : INT
+}
+
+' Relacionamentos
+pizzaria ||--o{ funcionario
+fornecedor ||--o{ fornecimento
+produto ||--o{ fornecimento
+funcionario |o--|| garcom
+funcionario |o--|| cozinheiro
+funcionario |o--|| motoboy
+cliente ||--o{ pedido
+pedido ||--o{ itempedido
+produto ||--o{ itempedido
+produto |o--o| pizza
+funcionario ||--o{ pedido
+motoboy ||--o{ pedido
+
+@enduml

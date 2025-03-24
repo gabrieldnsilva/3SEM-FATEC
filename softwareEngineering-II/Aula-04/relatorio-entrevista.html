@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Relatório de Entrevista - Clínica Médica</title>
+		<style>
+			:root {
+				--primary-color: #1e88e5;
+				--secondary-color: #43a047;
+				--accent-color: #e53935;
+				--light-bg: #f5f5f5;
+				--dark-text: #333333;
+				--light-text: #ffffff;
+				--border-radius: 8px;
+				--shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+			}
+
+			* {
+				margin: 0;
+				padding: 0;
+				box-sizing: border-box;
+			}
+
+			body {
+				font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+				line-height: 1.6;
+				color: var(--dark-text);
+				background-color: var(--light-bg);
+				padding: 20px;
+			}
+
+			.container {
+				max-width: 900px;
+				margin: 0 auto;
+				background: white;
+				padding: 30px;
+				border-radius: var(--border-radius);
+				box-shadow: var(--shadow);
+			}
+
+			header {
+				text-align: center;
+				margin-bottom: 30px;
+				padding-bottom: 20px;
+				border-bottom: 2px solid var(--primary-color);
+			}
+
+			h1 {
+				color: var(--primary-color);
+				margin-bottom: 15px;
+			}
+
+			h2 {
+				color: var(--primary-color);
+				margin-top: 30px;
+				margin-bottom: 15px;
+				padding-bottom: 10px;
+				border-bottom: 1px solid #ddd;
+			}
+
+			h3 {
+				color: var(--primary-color);
+				margin-top: 20px;
+				margin-bottom: 1px solid #ddd;
+			}
+
+			.identification,
+			.objective,
+			.interview,
+			.requirements,
+			.reflection,
+			.conclusion {
+				margin-bottom: 30px;
+				padding: 20px;
+				background-color: white;
+				border-radius: var(--border-radius);
+				box-shadow: var(--shadow);
+			}
+
+			.question {
+				background-color: #e3f2f3;
+				padding: 10px;
+				border-left: 5px solid var(--primary-color);
+				margin-bottom: 20px;
+				border-radius: var(--border-radius);
+			}
+
+			.answer {
+				background-color: #e8f5e9;
+				padding: 10px;
+				border-left: 5px solid var(--secondary-color);
+				margin-bottom: 20px;
+				margin-left: 20px;
+				border-radius: var(--border-radius);
+			}
+
+			.priority-list {
+				margin: 20px 0;
+			}
+
+			.priority-high,
+			.priority-medium,
+			.priority-low {
+				padding: 15px;
+				margin-bottom: 20px;
+				border-radius: var(--border-radius);
+			}
+
+			.priority-high {
+				background-color: #ffebee;
+				border-left: 5px solid var(--accent-color);
+			}
+
+			.priority-medium {
+				background-color: #fff8e1;
+				border-left: 5px solid #ffb300;
+			}
+			.priority-low {
+				background-color: #e8eaf6;
+				border-left: 5px solid #3f51b5;
+			}
+
+			ul {
+				list-style-position: inside;
+				margin-left: 15px;
+			}
+
+			li {
+				margin-bottom: 8px;
+			}
+
+			.reflection-point {
+				background-color: #f5f5f5;
+				padding: 15px;
+				margin-bottom: 15px;
+				border-radius: var(--border-radius);
+			}
+
+			footer {
+				text-align: center;
+				margin-top: 30px;
+				padding-top: 20px;
+				border-top: 1px solid #ddd;
+				font-size: 1em;
+				color: #666;
+			}
+
+			@media (max-width: 768px) {
+				.container {
+					padding: 15px;
+				}
+
+				.identification,
+				.objective,
+				.interview,
+				.requirements,
+				.reflection,
+				.conclusion {
+					padding: 15px;
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<div class="container">
+			<header>
+				<h1>Relatório de Entrevista para Levantamento de Requisitos</h1>
+			</header>
+
+			<section class="identification">
+				<h2>1. Identificação</h2>
+				<p>
+					<strong>a. Nome do Entrevistador:</strong> Pedro Henrique
+					Ribeiro (Analista de Sistemas)
+				</p>
+				<p>
+					<strong>b. Nome do Entrevistado/Cliente:</strong> Gabriel
+					Danilo do Nascimento e Silva (Gerente da Clínica Médica)
+				</p>
+				<p>
+					<strong>c. Título:</strong> Levantamento de Requisitos Para
+					Sistema de Agendamento de Consultas Médicas
+				</p>
+			</section>
+
+			<section class="objective">
+				<h2>2. Objetivo da Entrevista</h2>
+				<p>
+					Compreender as necessidades e requisitos para o
+					desenvolvimento de um sistema de agendamento online para a
+					Clínica Médica Bem-Estar, identificando os principais
+					desafios do processo atual e as funcionalidades esperadas
+					para o novo sistema
+				</p>
+			</section>
+
+			<section class="interview">
+				<h2>Perguntas e Respostas da Entrevista</h2>
+				<div class="question">
+					<p>
+						<strong>Analista:</strong>Qual a principal necessidade
+						ou problema que o sistema precisa resolver?
+					</p>
+				</div>
+				<div class="answer">
+					<p>
+						<strong>Cliente:</strong> Nosso maior problema
+						atualmente é a ineficiência no agendamento de consultas.
+						Recebemos muitas ligações diárias, causando sobrecarga
+						nas recepcionistas e gerando insatisfação nos pacientes
+						devido à demora no atendimento telefônico. Também temos
+						problemas com faltas às consultas porque os pacientes
+						esquecem seus agendamentos.
+					</p>
+				</div>
+				<div class="question">
+					<p>
+						<strong>Analista:</strong> Quais são as principais
+						funcionalidades esperadas?
+					</p>
+				</div>
+				<div class="answer">
+					<p>
+						<strong>Cliente:</strong> Precisamos que os pacientes
+						possam agendar, remarcar e cancelar consultas pela
+						internet. É essencial um sistema de notificações para
+						reduzir as faltas. Cada médico tem sua própria agenda
+						com horários específicos de atendimento, então o sistema
+						precisa ser flexível para gerenciar isso. Também
+						precisamos armazenar o histórico de consultas de cada
+						paciente e gerar relatórios administrativos.
+					</p>
+				</div>
+				<div class="question">
+					<p>
+						<strong>Analista:</strong> Quais informações precisam
+						ser registradas no sistema?
+					</p>
+				</div>
+				<div class="answer">
+					<p>
+						<strong>Cliente:</strong> Para os pacientes, precisamos
+						registrar dados pessoais como nome completo, CPF, data
+						de nascimento, telefone, email, convênio médico e número
+						da carteirinha. Para os médicos, nome, CRM,
+						especialidade, dias e horários de atendimento. Cada
+						consulta deve registrar o médico, paciente, data,
+						horário, especialidade e observações relevantes.
+					</p>
+				</div>
+				<div class="question">
+					<p>
+						<strong>Analista:</strong> Como os usuários interagem
+						com o sistema atualmente?
+					</p>
+				</div>
+				<div class="answer">
+					<p>
+						<strong>Cliente:</strong> Atualmente não temos um
+						sistema digital. Os agendamentos são feitos por telefone
+						ou presencialmente e registrados em uma agenda física e
+						em planilhas Excel. As recepcionistas verificam
+						manualmente a disponibilidade dos médicos, o que consome
+						muito tempo e está sujeito a erros.
+					</p>
+				</div>
+				<div class="question">
+					<p>
+						<strong>Analista:</strong> Existem restrições técnicas
+						ou operacionais? Como por exemplo: equipamentos,
+						conhecimento da equipe, integrações com outros sistemas,
+						etc... ?
+					</p>
+				</div>
+				<div class="answer">
+					<p>
+						<strong>Cliente:</strong> Temos computadores em todos os
+						consultórios e na recepção, todos com acesso à internet.
+						Nossa equipe tem conhecimento básico de informática,
+						então o sistema precisa ser intuitivo. Temos
+						aproximadamente 15 médicos de diferentes especialidades
+						e atendemos cerca de 100 pacientes por dia. O sistema
+						precisará integrar-se futuramente com nossa solução de
+						prontuário eletrônico.
+					</p>
+				</div>
+				<div class="question">
+					<p>
+						<strong>Analista:</strong> Existe algo mais que gostaria
+						de incluir? Alguma funcionalidade ou requisito
+						específico?
+					</p>
+				</div>
+				<div class="answer">
+					<p>
+						<strong>Cliente:</strong> Seria importante o sistema
+						permitir que confirmássemos a presença do paciente na
+						recepção e notificássemos os médicos sobre a chegada
+						deles. Também gostaria que o sistema permitisse aos
+						pacientes avaliar o atendimento após a consulta para
+						monitorarmos a qualidade do serviço.
+					</p>
+				</div>
+				<div class="question">
+					<p>
+						<strong>Analista:</strong> Há preocupações específicas
+						em relação ao funcionamento do sistema? Como segurança,
+						performance, usabilidade, etc... ?
+					</p>
+				</div>
+				<div class="answer">
+					<p>
+						<strong>Cliente:</strong> Estamos preocupados com a
+						segurança dos dados dos pacientes, especialmente
+						considerando a LGPD. Também nos preocupa a adaptação da
+						equipe e dos pacientes mais idosos ao novo sistema.
+					</p>
+				</div>
+			</section>
+
+			<section class="requirements">
+				<h2>4. Lista de Requisitos Levantados</h2>
+
+				<h3>a. Requisitos Funcionais:</h3>
+				<ul>
+					<li>Cadastro e autenticação de pacientes e médicos</li>
+					<li>Agendamento online de consultas pelos pacientes</li>
+					<li>Remarcação e cancelamento de consultas</li>
+					<li>
+						Sistema de notificações automáticas via e-mail e SMS
+					</li>
+					<li>
+						Gerenciamento de disponibilidade específica para cada
+						médico
+					</li>
+					<li>Armazenamento do histórico de consultas</li>
+					<li>Painel administrativo para gestão de agendas</li>
+					<li>Geração de relatórios de atendimento</li>
+					<li>Confirmação de presença do paciente na recepção</li>
+					<li>Sistema de avaliação pós-atendimento</li>
+				</ul>
+
+				<h3>b. Requisitos não funcionais:</h3>
+				<ul>
+					<li>Interface intuitiva e de fácil uso</li>
+					<li>Segurança e conformidade com a LGPD</li>
+					<li>Alta disponibilidade do sistema</li>
+					<li>
+						Tempo de resposta rápido para consultas ao banco de
+						dados
+					</li>
+					<li>
+						Compatibilidade com diferentes navegadores e
+						dispositivos
+					</li>
+					<li>
+						Escalabilidade para comportar o crescimento da clínica
+					</li>
+					<li>
+						Integração com sistema futuro de prontuário eletrônico
+					</li>
+				</ul>
+
+				<h3>c. Priorização dos requisitos:</h3>
+
+				<div class="priority-list">
+					<div class="priority-high">
+						<h4>Alta Prioridade:</h4>
+						<ul>
+							<li>Cadastro de pacientes e médicos</li>
+							<li>
+								Agendamento, remarcação e cancelamento de
+								consultas
+							</li>
+							<li>
+								Gerenciamento de disponibilidade dos médicos
+							</li>
+							<li>Sistema de notificações</li>
+						</ul>
+					</div>
+
+					<div class="priority-medium">
+						<h4>Média Prioridade:</h4>
+						<ul>
+							<li></li>
+						</ul>
+					</div>
+
+					<div class="priority-low">
+						<h4>Baixa Prioridade:</h4>
+						<ul>
+							<li></li>
+						</ul>
+					</div>
+				</div>
+			</section>
+
+			<section class="reflection">
+				<h2>5. Reflexão sobre o processo</h2>
+
+				<div class="reflection-point">
+					<h3>
+						a. Principais dificuldades encontradas na elicitação:
+					</h3>
+					<ul>
+						<li>1</li>
+						<li>2</li>
+						<li>3</li>
+						<li>4</li>
+					</ul>
+				</div>
+
+				<div class="reflection-point">
+					<h3>b. Aspectos positivos da experiência:</h3>
+					<ul>
+						<li>1</li>
+						<li>2</li>
+						<li>3</li>
+						<li>4</li>
+					</ul>
+				</div>
+				<div class="reflection-point">
+					<h3>c. Melhorias que poderiam ser feitas na abordagem:</h3>
+					<ul>
+						<li>1</li>
+						<li>2</li>
+						<li>3</li>
+						<li>4</li>
+					</ul>
+				</div>
+			</section>
+
+			<section class="conclusion">
+				<h2>6. Conclusão</h2>
+				<p>
+					A entrevista permitiu identificar claramente as necessidades
+					da Clínica Médica Bem-Estar para o desenvolvimento de um
+					sistema de agendamento de consultas. O atual processo manual
+					tem gerado ineficiências e insatisfação, e um sistema
+					digital com as funcionalidades levantadas pode trazer
+					grandes benefícios operacionais. Os requisitos prioritários
+					estão relacionados ao cadastro, agendamento e notificações,
+					seguidos pela gestão de informações e relatórios. Os
+					desafios principais incluem a segurança de dados e a
+					adaptação dos usuários. O próximo passo será a elaboração de
+					protótipos para validação com o cliente antes do início do
+					desenvolvimento.
+				</p>
+			</section>
+
+			<footer>
+				<p>Documento elaborado em: 12/03/2025</p>
+				<p>
+					Clínica Médica Bem-Estar &copy; Todos os Direitos Reservados
+				</p>
+			</footer>
+		</div>
+	</body>
+</html>

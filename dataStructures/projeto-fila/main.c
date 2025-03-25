@@ -25,7 +25,7 @@ int main(void)
         switch (opcao)
         {
         case OP_ADICIONAR:
-            printf("Digite um numero: ");
+
             scanf("%d", &numero);
             if (!fsAdicionar(numero))
             {

@@ -1,6 +1,12 @@
 #include <stdio.h>
 #include "senha.h"
 
+// Actual definition of the contadores array
+ContadorTipo contadores[NUM_TIPOS] = {
+    {TIPO_CLINICO_GERAL, 0},
+    {TIPO_PEDIATRIA, 0},
+    {TIPO_PREFERENCIAL, 0}};
+
 // Funções
 Senha gerarSenha(const char *tipo, int prioritaria)
 {

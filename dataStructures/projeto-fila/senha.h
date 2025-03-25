@@ -27,10 +27,7 @@ typedef struct
     int contador;
 } ContadorTipo;
 
-ContadorTipo contadores[] = {
-    {TIPO_CLINICO_GERAL, 0},
-    {TIPO_PEDIATRIA, 0},
-    {TIPO_PREFERENCIAL, 0}};
+extern ContadorTipo contadores[NUM_TIPOS];
 
 // Protítipos
 Senha gerarSenha(const char *tipo, int prioritaria);

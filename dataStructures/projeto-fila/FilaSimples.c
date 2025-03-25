@@ -28,24 +28,24 @@ bool fsEstaCheia()
     return fsFim == FSTAMANHO;
 }
 
-bool fsAdicionar(Senha senha) // Changed from int valor to Senha senha
+bool fsAdicionar(Senha senha)
 {
     if (fsEstaCheia())
     {
         return false;
     }
-    fsFila[fsFim] = senha; // Store Senha object
+    fsFila[fsFim] = senha;
     fsFim++;
     return true;
 }
 
-bool fsRetirar(Senha *senha) // Changed from int *valor to Senha *senha
+bool fsRetirar(Senha *senha)
 {
     if (fsEstaVazia())
     {
         return false;
     }
-    *senha = fsFila[fsInicio]; // Return Senha object
+    *senha = fsFila[fsInicio];
     fsInicio++;
     return true;
 }

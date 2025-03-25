@@ -58,12 +58,12 @@ void fsImprimir()
     }
     else
     {
-        printf("+---+-----+\n");
+        printf("+---+------+---------+\n");
         for (int i = fsInicio; i < fsFim; i++)
         {
             printf("| %1d | ", i);
             imprimirSenha(fsFila[i]); // Use imprimirSenha instead of printing int value
-            printf("+---+-----+\n");
+            printf("+---+------+---------+\n");
         }
     }
 }

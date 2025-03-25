@@ -6,21 +6,24 @@
 #define FILASIMPLES_H
 
 #include <stdbool.h>
+#include "senha.h"
 
 // Constantes
-enum {
+enum
+{
     FSTAMANHO = 5
 };
 
 // Variáveis
-extern int fsFila[FSTAMANHO];
+extern Senha fsFila[FSTAMANHO]; // Struct Senha
 extern int fsInicio;
 extern int fsFim;
 
 // Protótipos
 bool fsEstaVazia();
 bool fsEstaCheia();
-bool fsAdicionar(int valor);
-bool fsRetirar(int *valor);
+bool fsAdicionar(Senha senha);
+bool fsRetirar(Senha *senha);
+void fsImprimir();
 
-#endif //FILASIMPLES_H
+#endif // FILASIMPLES_H

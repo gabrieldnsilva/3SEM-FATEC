@@ -1,15 +1,20 @@
 //
 // Created by nava on 11/03/25.
+// Edited by Gabriel on 25/03/2025
 //
+
+#include <stdio.h>
 #include "FilaSimples.h"
+#include "senha.h"
 
 // Variáveis
-int fsFila[FSTAMANHO];
+Senha fsFila[FSTAMANHO]; // Change to Senha type
 int fsInicio = 0;
 int fsFim = 0;
 
 // Funções
-bool fsEstaVazia() {
+bool fsEstaVazia()
+{
     return fsInicio == fsFim;
     // if (fsInicio == fsFim) {
     //     return true;
@@ -18,24 +23,47 @@ bool fsEstaVazia() {
     // }
 }
 
-bool fsEstaCheia() {
+bool fsEstaCheia()
+{
     return fsFim == FSTAMANHO;
 }
 
-bool fsAdicionar(int valor) {
-    if (fsEstaCheia()) {
+bool fsAdicionar(Senha senha) // Changed from int valor to Senha senha
+{
+    if (fsEstaCheia())
+    {
         return false;
     }
-    fsFila[fsFim] = valor;
+    fsFila[fsFim] = senha; // Store Senha object
     fsFim++;
     return true;
 }
 
-bool fsRetirar(int *valor) {
-    if (fsEstaVazia()) {
+bool fsRetirar(Senha *senha) // Changed from int *valor to Senha *senha
+{
+    if (fsEstaVazia())
+    {
         return false;
     }
-    *valor = fsFila[fsInicio];
+    *senha = fsFila[fsInicio]; // Return Senha object
     fsInicio++;
     return true;
+}
+
+void fsImprimir()
+{
+    if (fsEstaVazia())
+    {
+        printf("Fila vazia!\n");
+    }
+    else
+    {
+        printf("+---+-----+\n");
+        for (int i = fsInicio; i < fsFim; i++)
+        {
+            printf("| %1d | ", i);
+            imprimirSenha(fsFila[i]); // Use imprimirSenha instead of printing int value
+            printf("+---+-----+\n");
+        }
+    }
 }

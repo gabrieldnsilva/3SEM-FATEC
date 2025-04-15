@@ -14,7 +14,7 @@ Lista *criarLista()
     return lista;
 }
 
-/*void destruirLista(Lista *lista)
+void destruirLista(Lista *lista)
 {
     if (lista == NULL)
         return;
@@ -28,7 +28,14 @@ Lista *criarLista()
     }
 
     free(lista);
-} */
+}
+
+int tamanhoLista(Lista *lista)
+{
+    if (lista == NULL)
+        return 0;
+    return lista->tamanho;
+}
 
 int estaVazia(Lista *lista)
 {

@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
+#include "interface.h"
 #include "lista.h"
 
 enum
@@ -8,7 +8,7 @@ enum
     ADICIONAR = 1,
     // EXCLUIR,
     // ALTERAR,
-    // IMPRIMIR_POR_CPF,
+    IMPRIMIR_POR_CPF,
     // IMPRIMIR_TODOS,
     // ORDENAR,
     SAIR
@@ -23,11 +23,11 @@ int main()
     {
         printf("\n===== SISTEMA DE CADASTRO =====\n");
         printf("%d - Adicionar\n", ADICIONAR);
-        // printf("2 - Excluir\n");
-        // printf("3 - Alterar\n");
-        // printf("4 - Imprimir por CPF\n");
-        // printf("5 - Imprimir Todos\n");
-        // printf("6 - Ordenar\n");
+        // printf("%d - Excluir\n", EXCLUIR);
+        // printf("%d - Alterar\n", ALTERAR);
+        printf("%d - Imprimir por CPF\n", IMPRIMIR_POR_CPF);
+        // printf("%d - Imprimir Todos\n", IMPRIMIR_TODOS);
+        // printf("%d - Ordenar\n", ORDENAR);
         printf("%d - Sair\n", SAIR);
         printf("Escolha uma opção: ");
         scanf("%d", &opcao);
@@ -36,10 +36,13 @@ int main()
         switch (opcao)
         {
         case ADICIONAR:
+            adicionarRegistro(lista);
             break;
         // case EXCLUIR:
         // case ALTERAR:
-        // case IMPRIMIR_POR_CPF:
+        case IMPRIMIR_POR_CPF:
+            imprimirRegistro(lista);
+            break;
         // case IMPRIMIR_TODOS:
         // case ORDENAR:
         case SAIR:

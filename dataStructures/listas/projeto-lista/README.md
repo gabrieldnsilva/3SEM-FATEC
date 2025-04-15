@@ -6,6 +6,6 @@ Assim, foram escritas as funções: criarLista, adicionarPessoa e imprimirPessoa
 No main, apenas as funções básicas, utilizando um ENUM para definir os tipos de operações e um loop para o menu utilizando switch case.
 Porém, na tentativa de criar um main.c mais limpo, identifiquei certas dificuldades para manter o código organizado e somente importar funções de outros arquivos, tendo a princípio a ideia de implementar o que fosse necessário no próprio main.c .
 
-Mas para evitar essa "má pratica" considerei utilizar de alguns conceitos vistos em POO, como encapsulamento e abstração, para criar uma estrutura de dados que representasse a lista de pessoas, utilizando controllers e interface para manipular essa lista.
+Mas para evitar essa "má pratica" considerei utilizar de alguns conceitos de POO, o famoso MVC, para criar uma estrutura de dados que representasse a lista de pessoas, utilizando Model-View-Controller para gerenciar o programa.
 
-Controller trabalharia com a lógica de manipulação da lista, enquanto a interface seria responsável por interagir com o usuário, recebendo entradas e exibindo saídas. Assim, o main.c poderia se concentrar em chamar essas funções e manter o fluxo do programa.
+Models trabalha com a lógica de manipulação da lista, enquanto controller seria responsável por interagir com o usuário. Main.c é o "View" da aplicação, recebendo entradas e exibindo saídas para o usuário.

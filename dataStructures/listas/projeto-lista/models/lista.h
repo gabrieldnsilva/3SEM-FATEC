@@ -27,6 +27,7 @@ Lista *criarLista();
 void destruirLista(Lista *lista);
 int estaVazia(Lista *lista);
 int tamanhoLista(Lista *lista);
+void trocarPessoas(Pessoa *a, Pessoa *b);
 
 // Protítipos das funções para manipulação dos dados
 int adicionarPessoa(Lista *lista, Pessoa pessoa);
@@ -35,6 +36,6 @@ int alterarPessoa(Lista *lista, const char *cpf, Pessoa novaPessoa);
 Pessoa *buscarPessoa(Lista *lista, const char *cpf);
 void imprimirPessoa(Pessoa pessoa);
 void imprimirTodos(Lista *lista);
-void ordenarPessoasPorNome(Lista *lista);
+void ordenarPorNome(Lista *lista);
 
 #endif // LISTA_H

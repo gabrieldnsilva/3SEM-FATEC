@@ -42,6 +42,13 @@ int estaVazia(Lista *lista)
     return (lista == NULL || lista->inicio == NULL);
 }
 
+void trocarPessoas(Pessoa *a, Pessoa *b)
+{
+    Pessoa temp = *a;
+    *a = *b;
+    *b = temp;
+}
+
 int adicionarPessoa(Lista *lista, Pessoa pessoa) // Sem verificação de CPF
 {
     if (lista == NULL)
@@ -167,4 +174,32 @@ void imprimirTodos(Lista *lista)
         imprimirPessoa(atual->pessoa);
         atual = atual->proximo;
     }
+}
+
+void ordenarPorNome(Lista *lista)
+{
+    if (estaVazia(lista) || lista->tamanho == 1)
+        return;
+
+    int trocou;
+    Node *atual;
+    Node *ultimo = NULL;
+
+    do
+    {
+        trocou = 0;
+        atual = lista->inicio;
+
+        while (atual->proximo != ultimo)
+        {
+            if (strcmp(atual->pessoa.nome, atual->proximo->pessoa.nome) > 0)
+            {
+                trocarPessoas(&(atual->pessoa), &(atual->proximo->pessoa));
+                trocou = 1;
+            }
+            atual = atual->proximo;
+        }
+
+        ultimo = atual;
+    } while (trocou);
 }

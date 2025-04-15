@@ -10,7 +10,7 @@ enum
     ALTERAR,
     IMPRIMIR_POR_CPF,
     IMPRIMIR_TODOS,
-    // ORDENAR,
+    ORDENAR,
     SAIR
 };
 
@@ -27,7 +27,7 @@ int main()
         printf("%d - Alterar\n", ALTERAR);
         printf("%d - Imprimir por CPF\n", IMPRIMIR_POR_CPF);
         printf("%d - Imprimir Todos\n", IMPRIMIR_TODOS);
-        // printf("%d - Ordenar\n", ORDENAR);
+        printf("%d - Ordenar\n", ORDENAR);
         printf("%d - Sair\n", SAIR);
         printf("Escolha uma opção: ");
         scanf("%d", &opcao);
@@ -52,7 +52,11 @@ int main()
             printf("\n=== Lista de Pessoas ===\n");
             imprimirTodos(lista);
             break;
-        // case ORDENAR:
+        case ORDENAR:
+            printf("\n=== Ordenando por Nome ===\n");
+            ordenarPorNome(lista);
+            printf("\nLista ordenada com sucesso!\n");
+            break;
         case SAIR:
             printf("\nSaindo...\n");
             break;

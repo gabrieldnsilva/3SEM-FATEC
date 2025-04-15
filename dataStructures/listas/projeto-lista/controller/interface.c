@@ -57,7 +57,7 @@ void adicionarRegistro(Lista *lista)
     }
 }
 
-/*void excluirRegistro(Lista *lista)
+void excluirRegistro(Lista *lista)
 {
     char cpf[12];
 
@@ -73,7 +73,6 @@ void adicionarRegistro(Lista *lista)
         printf("Erro ao excluir pessoa!\n");
     }
 }
-    */
 
 /*void alterarRegistro(Lista *lista)
 {

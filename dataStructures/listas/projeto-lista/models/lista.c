@@ -14,6 +14,27 @@ Lista *criarLista()
     return lista;
 }
 
+/*void destruirLista(Lista *lista)
+{
+    if (lista == NULL)
+        return;
+
+    Node *atual = lista->inicio;
+    while (atual != NULL)
+    {
+        Node *proximo = atual->proximo;
+        free(atual);
+        atual = proximo;
+    }
+
+    free(lista);
+} */
+
+int estaVazia(Lista *lista)
+{
+    return (lista == NULL || lista->inicio == NULL);
+}
+
 int adicionarPessoa(Lista *lista, Pessoa pessoa) // Sem verificação de CPF
 {
     if (lista == NULL)
@@ -31,12 +52,31 @@ int adicionarPessoa(Lista *lista, Pessoa pessoa) // Sem verificação de CPF
     return 1;
 }
 
+Pessoa *buscarPessoa(Lista *lista, const char *cpf)
+{
+    if (estaVazia(lista))
+        return NULL;
+
+    Node *atual = lista->inicio;
+
+    while (atual != NULL)
+    {
+        if (strcmp(atual->pessoa.cpf, cpf) == 0)
+        {
+            return &(atual->pessoa);
+        }
+        atual = atual->proximo;
+    }
+
+    return NULL; // CPF não encontrado
+}
+
 void imprimirPessoa(Pessoa pesssoa)
 {
-    printf("Nome: %d\n", pesssoa.nome);
-    printf("Endereço: %d\n", pesssoa.endereco);
-    printf("CPF: %d\n", pesssoa.cpf);
-    printf("Telefone: %d\n", pesssoa.telefone);
-    printf("Email: %d\n", pesssoa.email);
+    printf("Nome: %s\n", pesssoa.nome);
+    printf("Endereço: %s\n", pesssoa.endereco);
+    printf("CPF: %s\n", pesssoa.cpf);
+    printf("Telefone: %s\n", pesssoa.telefone);
+    printf("Email: %s\n", pesssoa.email);
     printf("------------------------\n");
 }

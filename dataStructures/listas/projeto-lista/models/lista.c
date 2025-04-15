@@ -40,6 +40,11 @@ int adicionarPessoa(Lista *lista, Pessoa pessoa) // Sem verificação de CPF
     if (lista == NULL)
         return 0;
 
+    if (buscarPessoa(lista, pessoa.cpf) != NULL)
+    {
+        return 0; // CPF já existe
+    }
+
     Node *novoNode = (Node *)malloc(sizeof(Node));
     if (novoNode == NULL)
         return 0;
@@ -48,6 +53,40 @@ int adicionarPessoa(Lista *lista, Pessoa pessoa) // Sem verificação de CPF
     novoNode->proximo = lista->inicio;
     lista->inicio = novoNode;
     lista->tamanho++;
+
+    return 1;
+}
+
+int excluirPessoa(Lista *lista, const char *cpf)
+{
+    if (estaVazia(lista))
+        return 0;
+
+    Node *atual = lista->inicio;
+    Node *anterior = NULL;
+
+    while (atual != NULL && strcmp(atual->pessoa.cpf, cpf) != 0)
+    {
+        anterior = atual;
+        atual = atual->proximo;
+    }
+
+    if (atual == NULL)
+        return 0; // CPF não encontrado
+
+    if (anterior == NULL)
+    {
+        // Remover o primeiro nó
+        lista->inicio = atual->proximo;
+    }
+    else
+    {
+        // Remover um nó do meio ou do final
+        anterior->proximo = atual->proximo;
+    }
+
+    free(atual);
+    lista->tamanho--;
 
     return 1;
 }

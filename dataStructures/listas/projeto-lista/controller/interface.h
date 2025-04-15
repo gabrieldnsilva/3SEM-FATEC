@@ -7,10 +7,10 @@
 void limparBuffer();
 void lerString(char *str, int tamanho);
 
-// Funções de "interface" para o usuário
+// Funções de "controller"
 void adicionarRegistro(Lista *lista);
-// void excluirRegistro(Lista *lista);
-// void alterarRegistro(Lista *lista);
+void excluirRegistro(Lista *lista);
+void alterarRegistro(Lista *lista);
 void imprimirRegistro(Lista *lista);
 
 #endif // INTERFACE_H

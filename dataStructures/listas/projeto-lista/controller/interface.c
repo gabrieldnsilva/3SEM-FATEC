@@ -29,7 +29,11 @@ void adicionarRegistro(Lista *lista)
     lerString(novaPessoa.cpf, sizeof(novaPessoa.cpf));
     limparBuffer(); // Funciona como um "flush" no buffer
 
-    // Fazer a validação do CPF aqui
+    if (buscarPessoa(lista, novaPessoa.cpf) != NULL) // Interage com a função de buscar importada de lista.h
+    {
+        printf("CPF já cadastrado!\n");
+        return;
+    }
 
     printf("Nome: ");
     lerString(novaPessoa.nome, sizeof(novaPessoa.nome));

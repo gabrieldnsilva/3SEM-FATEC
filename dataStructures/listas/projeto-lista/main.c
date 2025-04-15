@@ -9,7 +9,7 @@ enum
     EXCLUIR,
     ALTERAR,
     IMPRIMIR_POR_CPF,
-    // IMPRIMIR_TODOS,
+    IMPRIMIR_TODOS,
     // ORDENAR,
     SAIR
 };
@@ -26,7 +26,7 @@ int main()
         printf("%d - Excluir\n", EXCLUIR);
         printf("%d - Alterar\n", ALTERAR);
         printf("%d - Imprimir por CPF\n", IMPRIMIR_POR_CPF);
-        // printf("%d - Imprimir Todos\n", IMPRIMIR_TODOS);
+        printf("%d - Imprimir Todos\n", IMPRIMIR_TODOS);
         // printf("%d - Ordenar\n", ORDENAR);
         printf("%d - Sair\n", SAIR);
         printf("Escolha uma opção: ");
@@ -48,7 +48,10 @@ int main()
         case IMPRIMIR_POR_CPF:
             imprimirRegistro(lista);
             break;
-        // case IMPRIMIR_TODOS:
+        case IMPRIMIR_TODOS:
+            printf("\n=== Lista de Pessoas ===\n");
+            imprimirTodos(lista);
+            break;
         // case ORDENAR:
         case SAIR:
             printf("\nSaindo...\n");

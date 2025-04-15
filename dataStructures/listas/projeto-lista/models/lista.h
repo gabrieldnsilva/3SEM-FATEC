@@ -34,7 +34,7 @@ int excluirPessoa(Lista *lista, const char *cpf);
 int alterarPessoa(Lista *lista, const char *cpf, Pessoa novaPessoa);
 Pessoa *buscarPessoa(Lista *lista, const char *cpf);
 void imprimirPessoa(Pessoa pessoa);
-void imprimirTodasPessoas(Lista *lista);
+void imprimirTodos(Lista *lista);
 void ordenarPessoasPorNome(Lista *lista);
 
 #endif // LISTA_H

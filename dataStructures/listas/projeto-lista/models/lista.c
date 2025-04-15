@@ -149,3 +149,22 @@ void imprimirPessoa(Pessoa pesssoa)
     printf("Email: %s\n", pesssoa.email);
     printf("------------------------\n");
 }
+
+void imprimirTodos(Lista *lista)
+{
+    if (estaVazia(lista))
+    {
+        printf("Lista vazia!\n");
+        return;
+    }
+
+    Node *atual = lista->inicio;
+    int contador = 1;
+
+    while (atual != NULL)
+    {
+        printf("Pessoa %d:\n", contador++);
+        imprimirPessoa(atual->pessoa);
+        atual = atual->proximo;
+    }
+}

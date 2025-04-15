@@ -7,7 +7,7 @@ enum
 {
     ADICIONAR = 1,
     EXCLUIR,
-    // ALTERAR,
+    ALTERAR,
     IMPRIMIR_POR_CPF,
     // IMPRIMIR_TODOS,
     // ORDENAR,
@@ -24,7 +24,7 @@ int main()
         printf("\n===== SISTEMA DE CADASTRO =====\n");
         printf("%d - Adicionar\n", ADICIONAR);
         printf("%d - Excluir\n", EXCLUIR);
-        // printf("%d - Alterar\n", ALTERAR);
+        printf("%d - Alterar\n", ALTERAR);
         printf("%d - Imprimir por CPF\n", IMPRIMIR_POR_CPF);
         // printf("%d - Imprimir Todos\n", IMPRIMIR_TODOS);
         // printf("%d - Ordenar\n", ORDENAR);
@@ -41,14 +41,17 @@ int main()
         case EXCLUIR:
             excluirRegistro(lista);
             break;
-        // case ALTERAR:
+        case ALTERAR:
+            alterarRegistro(lista);
+            break;
+
         case IMPRIMIR_POR_CPF:
             imprimirRegistro(lista);
             break;
         // case IMPRIMIR_TODOS:
         // case ORDENAR:
         case SAIR:
-            printf("Saindo...\n");
+            printf("\nSaindo...\n");
             break;
         default:
             printf("Opção inválida! Tente novamente.\n");
@@ -57,6 +60,6 @@ int main()
     } while (opcao != SAIR);
 
     destruirLista(lista);
-    printf("Sistema encerrado.\n");
+    printf("\nSistema encerrado.");
     return 0;
 }

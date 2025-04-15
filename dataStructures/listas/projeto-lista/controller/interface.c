@@ -49,7 +49,7 @@ void adicionarRegistro(Lista *lista)
 
     if (adicionarPessoa(lista, novaPessoa)) // Interage com a função de adicionar de listas.h
     {
-        printf("Pessoa adicionada com sucesso!\n");
+        printf("\nPessoa adicionada com sucesso!\n");
     }
     else
     {
@@ -81,6 +81,8 @@ void alterarRegistro(Lista *lista)
 
     printf("CPF a ser alterado: ");
     lerString(cpf, sizeof(cpf));
+
+    limparBuffer();
 
     Pessoa *pessoaExistente = buscarPessoa(lista, cpf);
 

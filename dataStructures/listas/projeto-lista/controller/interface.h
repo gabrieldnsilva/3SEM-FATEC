@@ -9,8 +9,8 @@ void lerString(char *str, int tamanho);
 
 // Funções de "interface" para o usuário
 void adicionarRegistro(Lista *lista);
-void excluirRegistro(Lista *lista);
-void alterarRegistro(Lista *lista);
+// void excluirRegistro(Lista *lista);
+// void alterarRegistro(Lista *lista);
 void imprimirRegistro(Lista *lista);
 
 #endif // INTERFACE_H

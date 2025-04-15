@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include "lista.h"
 #include "interface.h"
 
 void limparBuffer()
@@ -26,6 +27,7 @@ void adicionarRegistro(Lista *lista)
 
     printf("CPF (apenas números): ");
     lerString(novaPessoa.cpf, sizeof(novaPessoa.cpf));
+    limparBuffer(); // Funciona como um "flush" no buffer
 
     // Fazer a validação do CPF aqui
 
@@ -51,7 +53,7 @@ void adicionarRegistro(Lista *lista)
     }
 }
 
-void excluirRegistro(Lista *lista)
+/*void excluirRegistro(Lista *lista)
 {
     char cpf[12];
 
@@ -67,13 +69,29 @@ void excluirRegistro(Lista *lista)
         printf("Erro ao excluir pessoa!\n");
     }
 }
+    */
 
-void alterarRegistro(Lista *lista)
+/*void alterarRegistro(Lista *lista)
 {
     // Implementar aqui
 }
+*/
 
 void imprimirRegistro(Lista *lista)
 {
-    // Implementar aqui
+    char cpf[12];
+
+    printf("CPF da pessoa a ser impressa: ");
+    lerString(cpf, 12);
+
+    Pessoa *pessoa = buscarPessoa(lista, cpf);
+
+    if (pessoa == NULL)
+    {
+        printf("CPF não cadastrado!\n");
+        return;
+    }
+
+    printf("\nDados da pessoa:\n");
+    imprimirPessoa(*pessoa);
 }

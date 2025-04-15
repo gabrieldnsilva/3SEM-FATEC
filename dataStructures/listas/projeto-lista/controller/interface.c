@@ -74,11 +74,65 @@ void excluirRegistro(Lista *lista)
     }
 }
 
-/*void alterarRegistro(Lista *lista)
+void alterarRegistro(Lista *lista)
 {
-    // Implementar aqui
+    char cpf[12];
+    char buffer[200];
+
+    printf("CPF a ser alterado: ");
+    lerString(cpf, sizeof(cpf));
+
+    Pessoa *pessoaExistente = buscarPessoa(lista, cpf);
+
+    if (pessoaExistente == NULL)
+    {
+        printf("CPF não cadastrado!\n");
+        return;
+    }
+
+    Pessoa pessoaAtualizada = *pessoaExistente;
+
+    printf("Nome atual: %s\n", pessoaExistente->nome);
+    printf("Novo nome ([ENTER] para manter): ");
+    lerString(buffer, sizeof(buffer));
+    if (strlen(buffer) > 0)
+    {
+        strcpy(pessoaAtualizada.nome, buffer);
+    }
+
+    printf("Endereço atual: %s\n", pessoaExistente->endereco);
+    printf("Novo endereço ([ENTER] para manter): ");
+    lerString(buffer, sizeof(buffer));
+    if (strlen(buffer) > 0)
+    {
+        strcpy(pessoaAtualizada.endereco, buffer);
+    }
+
+    printf("Telefone atual: %s\n", pessoaExistente->telefone);
+    printf("Novo telefone ([ENTER] para manter): ");
+    lerString(buffer, sizeof(buffer));
+    if (strlen(buffer) > 0)
+    {
+        strcpy(pessoaAtualizada.telefone, buffer);
+    }
+
+    printf("Email atual: %s\n", pessoaExistente->email);
+    printf("Novo email ([ENTER] para manter): ");
+    lerString(buffer, sizeof(buffer));
+    if (strlen(buffer) > 0)
+    {
+        strcpy(pessoaAtualizada.email, buffer);
+    }
+
+    if (alterarPessoa(lista, cpf, pessoaAtualizada)) // Interage com a função de alterar importada de lista.h
+    {
+        printf("Registro alterado com sucesso!\n");
+    }
+    else
+    {
+        printf("Erro ao alterar registro!\n");
+    }
 }
-*/
 
 void imprimirRegistro(Lista *lista)
 {

@@ -98,6 +98,29 @@ int excluirPessoa(Lista *lista, const char *cpf)
     return 1;
 }
 
+int alterarPessoa(Lista *lista, const char *cpf, Pessoa novaPessoa)
+{
+
+    if (estaVazia(lista))
+        return 0;
+
+    Node *atual = lista->inicio;
+
+    while (atual != NULL && strcmp(atual->pessoa.cpf, cpf) != 0)
+    {
+        atual = atual->proximo;
+    }
+    if (atual == NULL)
+        return 0; // Em caso de CPF não encontrado
+
+    strcpy(atual->pessoa.nome, novaPessoa.nome);
+    strcpy(atual->pessoa.endereco, novaPessoa.endereco);
+    strcpy(atual->pessoa.telefone, novaPessoa.telefone);
+    strcpy(atual->pessoa.email, novaPessoa.email);
+
+    return 1;
+}
+
 Pessoa *buscarPessoa(Lista *lista, const char *cpf)
 {
     if (estaVazia(lista))

@@ -209,3 +209,47 @@ struct no *noAtual()
 {
     return cursor;
 }
+
+// Nova função para testar a dupla ligação (em ambas as direções)
+void verificarIntegridade()
+{
+    if (inicio == NULL)
+    {
+        printf("Lista vazia - íntegra por definição.\n");
+        return;
+    }
+
+    // Verifica se a ligação para frente funciona
+    printf("Verificando integridade (frente->trás): ");
+    struct no *atual = inicio;
+    while (atual != NULL)
+    {
+        printf("%d ", atual->dado);
+        if (atual->proximo != NULL && atual->proximo->anterior != atual)
+        {
+            printf("\nERRO: Ponteiro 'anterior' inconsistente no nó %d!\n", atual->proximo->dado);
+            return;
+        }
+        atual = atual->proximo;
+    }
+    printf("OK!\n");
+
+    // Verifica se a ligação para trás funciona
+    printf("Verificando integridade (trás->frente): ");
+    atual = inicio;
+    while (atual->proximo != NULL)
+    {
+        atual = atual->proximo;
+    }
+    while (atual != NULL)
+    {
+        printf("%d ", atual->dado);
+        if (atual->anterior != NULL && atual->anterior->proximo != atual)
+        {
+            printf("\nERRO: Ponteiro 'proximo' inconsistente no nó %d!\n", atual->anterior->dado);
+            return;
+        }
+        atual = atual->anterior;
+    }
+    printf("OK!\n");
+}

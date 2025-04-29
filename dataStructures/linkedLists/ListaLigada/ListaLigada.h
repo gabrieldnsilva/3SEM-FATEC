@@ -34,6 +34,7 @@ void excluir(int dado);
 void excluirNoInicio();
 void excluirNoFinal();
 void excluirNoMeio();
+void verificarIntegridade(); // Nova função
 
 void paraInicio();
 void paraOProximo();

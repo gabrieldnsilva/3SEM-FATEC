@@ -106,9 +106,9 @@ void adicionarNoFinal()
 void adicionarNoMeio()
 {
     novo->proximo = aux;
+    novo->anterior = anterior; // Fixed: set the anterior pointer correctly
     anterior->proximo = novo;
     aux->anterior = novo;
-    anterior->proximo = novo;
 }
 
 void excluir(int dado)

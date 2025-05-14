@@ -148,3 +148,29 @@ int calculateHeight(struct Node *root)
 
     return (leftHeight > rightHeight) ? (leftHeight + 1) : (rightHeight + 1);
 }
+
+int countNodes(struct Node *root)
+{
+    if (root == NULL)
+    {
+        return 0;
+    }
+
+    return 1 + countNodes(root->left) + countNodes(root->right);
+}
+
+int isBST(struct Node *root, int min, int max)
+{
+    if (root == NULL)
+    {
+        return 1;
+    }
+
+    if (root->data < min || root->data > max)
+    {
+        return 0;
+    }
+
+    return isBST(root->left, min, root->data - 1) &&
+           isBST(root->right, root->data, max);
+}

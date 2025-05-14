@@ -174,3 +174,36 @@ int isBST(struct Node *root, int min, int max)
     return isBST(root->left, min, root->data - 1) &&
            isBST(root->right, root->data, max);
 }
+
+void printTree(struct Node *root, int level)
+{
+    if (root == NULL)
+    {
+        return;
+    }
+
+    level += 5;
+
+    printTree(root->right, level);
+
+    printf("\n");
+    for (int i = 5; i < level; i++)
+    {
+        printf("  ");
+    }
+    printf("%d\n", root->data);
+
+    printTree(root->left, level);
+}
+void freeTree(struct Node *root)
+{
+    if (root != NULL)
+    {
+        // Recursively free left and right subtrees
+        freeTree(root->left);
+        freeTree(root->right);
+
+        // Free the current node
+        free(root);
+    }
+}

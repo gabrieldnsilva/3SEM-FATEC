@@ -20,25 +20,23 @@ struct Node *createNode(int data)
     return newNode;
 }
 
-void addNode(struct Node *newNode, struct Node *root)
+struct Node *addNode(struct Node *newNode, struct Node *root)
 {
     if (root == NULL)
     {
-        root = newNode;
-        return;
+        return newNode;
     }
 
     if (newNode->data < root->data)
     {
-        if (root->left == NULL)
-        {
-            root->left = newNode;
-        }
-        else
-        {
-            addNode(newNode, root->left);
-        }
+        root->left = addNode(newNode, root->left);
     }
+    else
+    {
+        root->right = addNode(newNode, root->right);
+    }
+
+    return root;
 }
 
 struct Node *searchNode(int value, struct Node *root)
@@ -98,6 +96,7 @@ struct Node *findMin(struct Node *root)
     return currentlyNode;
 }
 
+// Fix the comparison in removeNode function
 struct Node *removeNode(int value, struct Node *root)
 {
     if (root == NULL)
@@ -107,7 +106,7 @@ struct Node *removeNode(int value, struct Node *root)
     {
         root->left = removeNode(value, root->left);
     }
-    else if (value, root->data)
+    else if (value > root->data) // Fixed comparison operator
     {
         root->right = removeNode(value, root->right);
     }
@@ -121,7 +120,7 @@ struct Node *removeNode(int value, struct Node *root)
         }
         else if (root->right == NULL)
         {
-            struct Node *temp = root->right;
+            struct Node *temp = root->left; // Fixed: was using root->right incorrectly
             free(root);
             return temp;
         }
@@ -195,6 +194,7 @@ void printTree(struct Node *root, int level)
 
     printTree(root->left, level);
 }
+
 void freeTree(struct Node *root)
 {
     if (root != NULL)

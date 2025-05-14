@@ -39,9 +39,9 @@ int main(void)
         {
         case OP_ADD:
             printf("\n == ADD NODE ==\n");
-            printf("Entender a number: ");
+            printf("Enter a number: "); // Fixed typo in prompt
             scanf("%d", &number);
-            addNode(createNode(number), root);
+            root = addNode(createNode(number), root);
             printf("Number %d added successfully!\n", number);
             pause();
             break;

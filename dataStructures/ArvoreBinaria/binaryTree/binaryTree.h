@@ -25,8 +25,9 @@ struct Node *createNode(int data);
  * Adds a new node to the binary search tree.
  * @param newNode The node to be added.
  * @param root The root of the tree or subtree where the node will be inserted.
+ * @return A pointer to the new root after insertion.
  */
-void addNode(struct Node *newNode, struct Node *root);
+struct Node *addNode(struct Node *newNode, struct Node *root);
 
 /**
  * Searches for a node with the given value in the binary search tree.

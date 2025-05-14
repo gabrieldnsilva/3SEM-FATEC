@@ -40,3 +40,18 @@ void addNode(struct Node *newNode, struct Node *root)
         }
     }
 }
+
+struct Node *searchNode(int value, struct Node *root)
+{
+    if (root == NULL || root->data == value)
+    {
+        return root;
+    }
+
+    if (value < root->data)
+    {
+        return searchNode(value, root->left);
+    }
+
+    return searchNode(value, root->right);
+}

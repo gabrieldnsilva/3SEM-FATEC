@@ -55,3 +55,83 @@ struct Node *searchNode(int value, struct Node *root)
 
     return searchNode(value, root->right);
 }
+
+void preOrder(struct Node *root)
+{
+    if (root != NULL)
+    {
+        printf("%d ", root->data);
+        preOrder(root->left);
+        preOrder(root->right);
+    }
+}
+
+void inOrder(struct Node *root)
+{
+    if (root != NULL)
+    {
+        inOrder(root->left);
+        printf("%d ", root->data);
+        inOrder(root->right);
+    }
+}
+
+void postOrder(struct Node *root)
+{
+    if (root != NULL)
+    {
+        postOrder(root->left);
+        postOrder(root->right);
+        printf("%d ", root->data);
+    }
+}
+
+struct Node *findMin(struct Node *root)
+{
+    struct Node *currentlyNode = root;
+
+    while (currentlyNode && currentlyNode->left != NULL)
+    {
+        currentlyNode = currentlyNode->left;
+    }
+
+    return currentlyNode;
+}
+
+struct Node *removeNode(int value, struct Node *root)
+{
+    if (root == NULL)
+        return root;
+
+    if (value < root->data)
+    {
+        root->left = removeNode(value, root->left);
+    }
+    else if (value, root->data)
+    {
+        root->right = removeNode(value, root->right);
+    }
+    else
+    {
+        if (root->left == NULL)
+        {
+            struct Node *temp = root->right;
+            free(root);
+            return temp;
+        }
+        else if (root->right == NULL)
+        {
+            struct Node *temp = root->right;
+            free(root);
+            return temp;
+        }
+
+        struct Node *temp = findMin(root->right);
+
+        root->data = temp->data;
+
+        root->right = removeNode(temp->data, root->right);
+    }
+
+    return root;
+}
